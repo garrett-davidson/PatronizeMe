@@ -1,0 +1,2 @@
+class IssueTransaction < ApplicationRecord
+end
