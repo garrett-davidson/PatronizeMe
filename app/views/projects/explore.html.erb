@@ -4,7 +4,8 @@
   <% @projects.each do |project| %>
     <div class="card ">
       <div class="card-body flex-justify-between">
-        <div class="row">
+        <div class="row align-items-center">
+          <%= image_tag project.owner.profile_picture_path, size: '50x50' %>
           <div class="col-3"><strong><%= project.name %></strong></div>
           <div class="col-2"><%= pluralize(project.supporters.count, 'supporter') %></div>
           <div class="col"><%= '$' + project.total_funding.to_s + ' Pledged' %></div>
