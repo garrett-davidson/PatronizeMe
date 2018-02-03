@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyString
-  status: 
+finishplz:
+  name: Git \'er done
+  description: Let\'s get this website done!
+  status: 0
+  parent: null
+  project: pm
 
-two:
-  name: MyString
-  description: MyString
-  status: 
+inshallah:
+  name: Maybe finish?
+  description: Hopefully one day I\'ll get to this
+  status: 0
+  parent: null
+  project: combo

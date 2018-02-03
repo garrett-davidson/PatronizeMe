@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyString
-  creator: 
-  status: 
+pm:
+  name: PatronizeMe
+  description: A really awesome new website
+  owner: garrett
+  status: 0
 
-two:
-  name: MyString
-  description: MyString
-  creator: 
-  status: 
+combo:
+  name: Combo
+  description: Another really awesome new website
+  owner: garrett
+  status: 0

@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  amount: 1
+  amount: 9999
   completed: false
   cancelled: false
+  user: richard
+  issue: finishplz
 
 two:
-  amount: 1
+  amount: 0.5
   completed: false
   cancelled: false
+  user: richard
+  issue: inshallah
