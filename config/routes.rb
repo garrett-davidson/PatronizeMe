@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'explore', to: 'projects#explore'
+
   resources :projects
   get 'home/index'
 
