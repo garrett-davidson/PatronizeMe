@@ -60,7 +60,7 @@ gem 'devise'
 # Bootstrap setup
 # From https://launchschool.com/blog/integrating-rails-and-bootstrap-part-1/#css_preprocessors
 gem 'autoprefixer-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap'
 
 # jquery
 gem 'jquery-rails'
