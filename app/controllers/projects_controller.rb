@@ -29,8 +29,10 @@ class ProjectsController < ApplicationController
   end
 
   def search
-    query = params.require('q')
+    query = params.require :q
     @projects = Project.where('LOWER(name) LIKE LOWER(?)', '%' + query + '%')
+  rescue ActionController::ParameterMissing
+    redirect_to '/explore'
   end
 
   # POST /projects
