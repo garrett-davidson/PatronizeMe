@@ -1,20 +1,6 @@
 <h1>Explore</h1>
 
 <div class="container no-gutters">
-  <% @projects.each do |project| %>
-    <div class="card ">
-      <div class="card-body flex-justify-between">
-        <div class="row align-items-center">
-          <%= image_tag profile_picture_path(project.owner), size: '50x50' %>
-          <div class="col-3"><strong><%= project.name %></strong></div>
-          <div class="col-2"><%= pluralize(project.supporters.count, 'supporter') %></div>
-          <div class="col"><%= '$' + project.total_funding.to_s + ' Pledged' %></div>
-          <%= button_to 'Support', '/', class: 'btnb' %>
-        </div>
-        <div class="row">
-          <div class="card-text"><%= project.description %></div>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <input class="form-control form-control-lg" type="text" placeholder="Search...">
+  <%= render 'table' %>
 </div>
