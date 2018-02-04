@@ -1,3 +1,11 @@
+<input id="searchbar" class="form-control form-control-lg" type="text" placeholder="Search..." value=<%= (params.permit :q)[:q] %>>
+<script>
+  var searchbar = document.getElementById('searchbar')
+  searchbar.onkeyup = function(e) {
+  if ((e.keycode || e.which) == 13) {
+  window.location.href = '/search?q=' + searchbar.value
+  }}
+</script>
 <% @projects.each do |project| %>
   <div class="card ">
     <div class="card-body flex-justify-between">
