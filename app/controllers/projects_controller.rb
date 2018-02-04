@@ -28,6 +28,11 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
+  def search
+    query = params.require('q')
+    @projects = Project.where('LOWER(name) LIKE LOWER(?)', '%' + query + '%')
+  end
+
   # POST /projects
   # POST /projects.json
   def create

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'explore', to: 'projects#explore'
+  get 'search', to: 'projects#search'
 
   resources :projects
   get 'home/index'
