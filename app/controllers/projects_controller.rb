@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
 
   def explore
     # TODO: Sort projects
-    @projects = Project.all
+    @projects = Project.all.limit 20
     respond_to do |format|
       format.html { render :explore }
       format.json { render json: @projects }
@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
 
   def search
     query = '%' + params.require(:q) + '%'
-    @projects = Project.where('LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER (?)', query, query)
+    @projects = Project.where('LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER (?)', query, query).limit 20
 
     respond_to do |format|
       format.html { render :search }
