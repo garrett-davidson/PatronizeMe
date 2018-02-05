@@ -26,11 +26,20 @@ class ProjectsController < ApplicationController
   def explore
     # TODO: Sort projects
     @projects = Project.all
+    respond_to do |format|
+      format.html { render :explore }
+      format.json { render json: @projects }
+    end
   end
 
   def search
     query = '%' + params.require(:q) + '%'
     @projects = Project.where('LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER (?)', query, query)
+
+    respond_to do |format|
+      format.html { render :search }
+      format.json { render json: @projects }
+    end
   rescue ActionController::ParameterMissing
     redirect_to '/explore'
   end
