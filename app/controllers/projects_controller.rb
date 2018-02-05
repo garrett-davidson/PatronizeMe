@@ -24,8 +24,7 @@ class ProjectsController < ApplicationController
   end
 
   def explore
-    # TODO: Sort projects
-    @projects = Project.all.limit 20
+    @projects = Project.find_by_sql('SELECT "projects".* FROM projects ORDER BY (SELECT SUM("issue_transactions"."amount") FROM "issue_transactions" INNER JOIN "issues" ON "issue_transactions"."issue_id"= "issues"."id" WHERE "issues"."project_id" = projects.id) DESC LIMIT 20')
     respond_to do |format|
       format.html { render :explore }
       format.json { render json: @projects }
