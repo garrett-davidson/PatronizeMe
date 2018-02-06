@@ -2,6 +2,7 @@
 
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  ORDER_BY_SUPPORT = '(SELECT SUM("issue_transactions"."amount") FROM "issue_transactions" INNER JOIN "issues" ON "issue_transactions"."issue_id"= "issues"."id" WHERE "issues"."project_id" = projects.id) DESC'
 
   # GET /projects
   # GET /projects.json
@@ -24,7 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   def explore
-    @projects = Project.all.order('(SELECT SUM("issue_transactions"."amount") FROM "issue_transactions" INNER JOIN "issues" ON "issue_transactions"."issue_id"= "issues"."id" WHERE "issues"."project_id" = projects.id) DESC').limit 20
+    @projects = Project.all.order(ORDER_BY_SUPPORT).limit 20
     respond_to do |format|
       format.html { render :explore }
       format.json { render json: @projects }
@@ -33,7 +34,7 @@ class ProjectsController < ApplicationController
 
   def search
     query = '%' + params.require(:q) + '%'
-    @projects = Project.where('LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER (?)', query, query).limit 20
+    @projects = Project.where('LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER (?)', query, query).order(ORDER_BY_SUPPORT).limit 20
 
     respond_to do |format|
       format.html { render :search }

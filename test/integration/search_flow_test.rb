@@ -41,4 +41,14 @@ class SearchFlowTest < ActionDispatch::IntegrationTest
     get '/search.json'
     assert_redirected_to '/explore'
   end
+
+  test 'sorted search results' do
+    results = results_for_query('a').map { |x| Project.find(x['id']) }
+    prev = results[0].total_funding
+    results.each do |project|
+      assert project.total_funding <= prev, project.total_funding.to_s + ' not <= ' + prev.to_s
+      prev = project.total_funding
+    end
+    assert :success
+  end
 end
