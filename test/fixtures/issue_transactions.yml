@@ -8,7 +8,7 @@ one:
   issue: finishplz
 
 two:
-  amount: 0.5
+  amount: 1
   completed: false
   cancelled: false
   user: richard
