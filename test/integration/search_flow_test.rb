@@ -44,11 +44,7 @@ class SearchFlowTest < ActionDispatch::IntegrationTest
 
   test 'sorted search results' do
     results = results_for_query('a').map { |x| Project.find(x['id']) }
-    prev = results[0].total_funding
-    results.each do |project|
-      assert project.total_funding <= prev, project.total_funding.to_s + ' not <= ' + prev.to_s
-      prev = project.total_funding
-    end
+    assert_collection_sorted_desc results, :total_funding
     assert :success
   end
 end
