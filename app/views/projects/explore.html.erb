@@ -1,5 +1,18 @@
 <h1>Explore</h1>
 
 <div class="container no-gutters">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="?sort=recent" id="recent-tab">Recent</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="?sort=top" id="top-tab">Top</a>
+      </li>
+      <script>
+        document.getElementById(new URL(window.location.href).searchParams.get("sort") + '-tab').className += " active"
+      </script>
+    </ul>
+  </div>
   <%= render 'table' %>
 </div>

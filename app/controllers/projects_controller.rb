@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
   def explore
     @projects =
       if params.permit(:sort)[:sort] == 'recent'
-        Project.all.order(created_at: :desc)
+        Project.all.order(created_at: :desc).limit 20
       else
         Project.all.order(ORDER_BY_SUPPORT).limit 20
       end

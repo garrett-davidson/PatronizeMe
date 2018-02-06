@@ -45,6 +45,6 @@ class SearchFlowTest < ActionDispatch::IntegrationTest
   test 'sorted search results' do
     results = results_for_query('a').map { |x| Project.find(x['id']) }
     assert_collection_sorted_desc results, :total_funding
-    assert :success
+    assert_response :success
   end
 end
