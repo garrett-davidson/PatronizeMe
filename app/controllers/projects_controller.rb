@@ -3,6 +3,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   ORDER_BY_SUPPORT = '(SELECT SUM("issue_transactions"."amount") FROM "issue_transactions" INNER JOIN "issues" ON "issue_transactions"."issue_id"= "issues"."id" WHERE "issues"."project_id" = projects.id) DESC'
+  PROJECTS_PER_PAGE = 20
 
   # GET /projects
   # GET /projects.json
@@ -25,11 +26,13 @@ class ProjectsController < ApplicationController
   end
 
   def explore
+    offset = params.permit(:p)[:p]&.to_i || 1
+    offset -= 1
     @projects =
       if params.permit(:sort)[:sort] == 'recent'
-        Project.all.order(created_at: :desc).limit 20
+        Project.all.order(created_at: :desc).limit(PROJECTS_PER_PAGE).offset(offset * PROJECTS_PER_PAGE)
       else
-        Project.all.order(ORDER_BY_SUPPORT).limit 20
+        Project.all.order(ORDER_BY_SUPPORT).limit(PROJECTS_PER_PAGE).offset(offset * PROJECTS_PER_PAGE)
       end
 
     respond_to do |format|
@@ -39,8 +42,10 @@ class ProjectsController < ApplicationController
   end
 
   def search
+    offset = params.permit(:p)[:p]&.to_i || 1
+    offset -= 1
     query = '%' + params.require(:q) + '%'
-    @projects = Project.where('LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER (?)', query, query).order(ORDER_BY_SUPPORT).limit 20
+    @projects = Project.where('LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER (?)', query, query).order(ORDER_BY_SUPPORT).limit(PROJECTS_PER_PAGE).offset(offset * PROJECTS_PER_PAGE)
 
     respond_to do |format|
       format.html { render :search }
