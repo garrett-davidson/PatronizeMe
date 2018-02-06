@@ -5,9 +5,11 @@ pm:
   description: A really awesome new website
   owner: garrett
   status: 0
+  created_at: <%= Time.now %>
 
 combo:
   name: Combo
   description: Another really awesome new website
   owner: garrett
   status: 0
+  created_at: <%= Time.now + 1 %>

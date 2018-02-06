@@ -25,7 +25,13 @@ class ProjectsController < ApplicationController
   end
 
   def explore
-    @projects = Project.all.order(ORDER_BY_SUPPORT).limit 20
+    @projects =
+      if params.permit(:sort)[:sort] == 'recent'
+        Project.all.order(created_at: :desc)
+      else
+        Project.all.order(ORDER_BY_SUPPORT).limit 20
+      end
+
     respond_to do |format|
       format.html { render :explore }
       format.json { render json: @projects }
