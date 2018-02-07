@@ -22,3 +22,14 @@
     </div>
   </div>
 <% end %>
+<nav aria-label="Page selector">
+  <ul class="pagination">
+    <li class="page-item <%= 'disabled' unless @current_page > 1 %>"><a class="page-link" href="#">Previous</a></li>
+    <% pages = [1, @current_page - 1, @current_page, @current_page + 1, @page_count - 1].uniq %>
+    <% pages.each do |page| %>
+      <% next if page < 1 || page > @page_count %>
+      <li class="page-item <%= 'active' if @current_page == page %>"><a class="page-link" href="?p=<%= page %>"><%= page %></a></li>
+    <% end %>
+    <li class="page-item <%= 'disabled' unless @current_page < @page_count - 1 %>"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>

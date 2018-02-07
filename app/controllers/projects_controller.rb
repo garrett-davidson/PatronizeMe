@@ -27,6 +27,8 @@ class ProjectsController < ApplicationController
 
   def explore
     offset = params.permit(:p)[:p]&.to_i || 1
+    @current_page = offset
+    @page_count = (Project.count / PROJECTS_PER_PAGE.to_f).ceil
     offset -= 1
     @projects =
       if params.permit(:sort)[:sort] == 'recent'
@@ -43,6 +45,8 @@ class ProjectsController < ApplicationController
 
   def search
     offset = params.permit(:p)[:p]&.to_i || 1
+    @current_page = offset
+    @page_count = (Project.count / PROJECTS_PER_PAGE.to_f).ceil
     offset -= 1
     query = '%' + params.require(:q) + '%'
     @projects = Project.where('LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER (?)', query, query).order(ORDER_BY_SUPPORT).limit(PROJECTS_PER_PAGE).offset(offset * PROJECTS_PER_PAGE)
