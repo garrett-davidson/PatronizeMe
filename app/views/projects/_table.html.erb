@@ -33,3 +33,10 @@
     <li class="page-item <%= 'disabled' unless @current_page < @page_count - 1 %>"><a class="page-link" href="#">Next</a></li>
   </ul>
 </nav>
+<script>
+  var searchbar = document.getElementById('searchbar')
+  searchbar.onkeyup = function(e) {
+  if ((e.keycode || e.which) == 13) {
+  window.location.href = '/search?q=' + searchbar.value
+  }}
+</script>
