@@ -61,8 +61,8 @@ gem 'omniauth-github'
 
 # Bootstrap setup
 # From https://launchschool.com/blog/integrating-rails-and-bootstrap-part-1/#css_preprocessors
-gem 'autoprefixer-rails'
-gem 'bootstrap'
+gem 'bootstrap-sass'
+gem 'bootstrap-social-rails'
 
 # jquery
 gem 'jquery-rails'
