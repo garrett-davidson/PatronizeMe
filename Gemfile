@@ -56,13 +56,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Devise (authentication)
 gem 'devise'
-gem 'omniauth'
-gem 'omniauth-github'
 
 # Bootstrap setup
 # From https://launchschool.com/blog/integrating-rails-and-bootstrap-part-1/#css_preprocessors
-gem 'bootstrap-sass'
-gem 'bootstrap-social-rails'
+gem 'autoprefixer-rails'
+gem 'bootstrap'
 
 # jquery
 gem 'jquery-rails'
