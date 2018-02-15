@@ -1,2 +1,8 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+<% if user_signed_in? %>
+  <div>Signed in as... <%= current_user.email %></div>
+  <div> <%= current_user.provider %> <%= current_user.uid %>  <%= current_user.email %> <%= current_user.password %> </div>
+<% else %>
+  <div>NOTHING</div>
+<% end %>
