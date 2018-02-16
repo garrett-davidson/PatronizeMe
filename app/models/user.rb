@@ -5,6 +5,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :projects, inverse_of: :owner
+  has_many :projects, inverse_of: :owner, foreign_key: 'owner_id'
   has_many :issue_transactions, inverse_of: :user
 end
