@@ -15,3 +15,13 @@
  */
 
 @import "bootstrap";
+
+.navbar-nav > li{
+  	padding-left:15px;
+  	padding-right:15px;
+}
+.dropdown-menu { 
+	min-width: 150px;
+	background-color: white;
+	color: #555555;
+}
