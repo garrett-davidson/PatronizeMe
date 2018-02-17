@@ -6,7 +6,7 @@ if [[ $# < 1 ]]; then
 fi
 #what happens locally
 if [[ $(hostname) != 'eridu' ]]; then
-    rsync -rvzhe ssh --delete `pwd` $1@getpatronizeme.com:/home/pm/serverdeploy/
+    rsync -rvzhe ssh --delete --exclude=tmp `pwd` $1@getpatronizeme.com:/home/pm/serverdeploy/
     ssh $1@getpatronizeme.com bash "/home/pm/serverdeploy/PatronizeMe/deploy.sh eridu"
 fi
 #what happens remotely
