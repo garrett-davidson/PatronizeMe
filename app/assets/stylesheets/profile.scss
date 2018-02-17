@@ -4,3 +4,47 @@
 .tab-pane {
 	padding-top: 15px;
 }
+#btn_table {
+	min-width: 75px;
+	max-height: 40px;
+	min-height: 40px;
+}
+.card-text{
+	min-width: 100px;
+}
+.col-lg-8{
+	float: right;
+}
+.col-auto {
+	float: right;
+}
+#btn_projects{
+	margin-top: 100px;
+	min-width: 100px;
+}
+#nav-tab{
+	color: black;
+	background-color: #e0e0e0;
+}
+#nav-Backing-tab:hover, nav-Backing-tab:active {
+	background-color: white;
+	color: green;
+}
+#nav-Projects-tab:hover, nav-Backing-tab:active {
+	background-color: white;
+	color: green;
+}
+#nav-Info-tab:hover, nav-Backing-tab:active {
+	background-color: white;
+	color: green;
+}
+.nav-tabs > a {
+  font-size: 22px;
+}
+.card-link{
+	font-size: 22px;
+}
+.card-link:hover {
+	background-color: white;
+	text-decoration: underline;
+}

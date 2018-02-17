@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+  ADD SOME FUNDS 
+<%else%>  
+  <!--ToDo: Change to login path-->
+  <script>window.location.href = "<%= root_path%>";</script>>
+<%end%>
