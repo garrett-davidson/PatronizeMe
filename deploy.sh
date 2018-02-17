@@ -6,7 +6,7 @@ if [[ $# < 1 ]]; then
 fi
 #what happens locally
 if [[ $(hostname) != 'eridu' ]]; then
-    rsync -rve ssh --delete --chmod=D2777,F777 --exclude=tmp `pwd` $1@getpatronizeme.com:/home/pm/serverdeploy/
+    rsync -rve ssh --delete --exclude=tmp `pwd` $1@getpatronizeme.com:/home/pm/serverdeploy/
     ssh $1@getpatronizeme.com bash "/home/pm/serverdeploy/PatronizeMe/deploy.sh eridu"
 fi
 #what happens remotely
@@ -19,6 +19,7 @@ if [[ $(hostname) == 'eridu' ]]; then
 
         cd $SERVER_PATH
         chmod -R 777 .
+        chown -R :patronizeme .
         pwd
         bundle install
         bin/rails server
