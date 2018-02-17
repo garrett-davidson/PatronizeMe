@@ -18,31 +18,36 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="explore">Explore<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/explore">Explore<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" id="navsearchbar">
-            <div class="input-group-prepend">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="button">$</button>
-              <span class="input-group-text">0.00</span>
-            </div>
-            <li class="nav-item dropdown">
-              <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/cantaloupez-profile_image-e9c9f11c97224a8c-300x300.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="profile">Profile</a>
-                <a class="dropdown-item" href="">Add Funds</a>
-                <a class="dropdown-item" href="#">Settings</a>
-                <%= button_to "Sign out", destroy_user_session_path()  ,method: :delete %>
-        
-              </div>
+            <% if user_signed_in? %>
+                    <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" id="navsearchbar">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="button">$</button>
+                      <span class="input-group-text">0.00</span>
+                    </div>
+                    <li class="nav-item dropdown">
+                      <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/cantaloupez-profile_image-e9c9f11c97224a8c-300x300.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="profile">Profile</a>
+                        <a class="dropdown-item" href="">Add Funds</a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                         <%= link_to('Logout', destroy_user_session_path, method: :delete) %>      
+                      </div>
+                    </li>
+            <% else %>
 
-            </li>
+                <a class="nav-link" href="/users/sign_in">Sign In<span class="sr-only">(current)</span></a>
+                <%= link_to "Sign in", "/users/sign_in", :style => "width:100px" ,:class => "sr-only" %>
+            <% end %>
+
           </form>
         </div>
       </nav>
