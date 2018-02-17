@@ -20,7 +20,7 @@ if [[ $(hostname) == 'eridu' ]]; then
         cd $SERVER_PATH
         PID=$(ps -aux | grep puma | awk  '{print $2}' | sed -sn 1p)
         echo $PID
-        kill -KILL $(ps -aux | grep puma | awk  '{print $2}' | sed -sn 2p)
+        kill -KILL $(ps -aux | grep puma | awk  '{print $2}' | sed -sn 1p)
         pwd
         bundle install
         bin/rails server
