@@ -18,6 +18,7 @@ if [[ $(hostname) == 'eridu' ]]; then
         echo 'Restarting server'
 
         cd $SERVER_PATH
+        kill -KILL `lsof -wni tcp:3000 | awk  '{print $2}' | sed -sn 2p`
         pwd
         bundle install
         bin/rails server
