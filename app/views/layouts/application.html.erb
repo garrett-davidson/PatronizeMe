@@ -24,25 +24,35 @@
               <a class="nav-link" href="#">Link</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+          <form class="form-inline">
             <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" id="navsearchbar">
-            <div class="input-group-prepend">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="button">$</button>
-              <span class="input-group-text">0.00</span>
-            </div>
-            <li class="nav-item dropdown">
-              <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/cantaloupez-profile_image-e9c9f11c97224a8c-300x300.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="profile">Profile</a>
-                <a class="dropdown-item" href="">Add Funds</a>
-                <a class="dropdown-item" href="#">Settings</a>
-                <a class="dropdown-item" href="#">Sign out</a>
-              </div>
-
-            </li>
+            <% if user_signed_in? %>
+              <li class="input-group-prepend">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button">$</button>
+                <span class="input-group-text"><%=current_user.balance%></span>
+              </li>
+            <% end %>
           </form>
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                  <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/cantaloupez-profile_image-e9c9f11c97224a8c-300x300.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <% if user_signed_in? %>
+                      <a class="dropdown-item" href="<%= profile_path %>">Profile</a>
+                      <!-- ToDo: Add funds page-->
+                      <a class="dropdown-item" href="<%= explore_path %>">Add Funds</a>
+                      <a class="dropdown-item" href="#">Settings</a>
+                    <!-- ToDo: Whateverthe sign out path is-->
+                      <a class="dropdown-item" href="#">Sign out</a>
+                    <% else %>
+                    <!-- ToDo: Whateverthe sign in path or sign up path-->
+                      <a class="dropdown-item" href="<%= new_user_session_path %>">Sign in</a>
+                    <% end %>
+                  </div>
+              </li>
+          </ul>
         </div>
       </nav>
     <div id="main-container" class="container-fluid">
