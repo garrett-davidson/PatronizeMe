@@ -18,7 +18,7 @@ if [[ $(hostname) == 'eridu' ]]; then
         echo 'Restarting server'
 
         cd $SERVER_PATH
-        PID=$(lsof -wni tcp:3000 | awk  '{print $2}' | sed -sn 2p)
+        PID=$(ps -aux | grep puma | awk  '{print $2}' | sed -sn 1p)
         echo $PID
         kill -KILL $(lsof -wni tcp:3000 | awk  '{print $2}' | sed -sn 2p)
         pwd
