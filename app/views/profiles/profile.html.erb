@@ -1,51 +1,54 @@
 <% if user_signed_in? %>
 <div class="container-fluid">
-	<div class="row ">
-		<div class="col-lg-1">
-		</div>
-	    <div class="col-lg-auto">
-			<div class="card border-light" style="width: 22rem;">
+	<div class="row align-items-top">
+	    <div class="col-lg-auto offset-lg-1">
+			<div class="card border-light" style="width: 20rem;">
 			  <img class="card-img-top" src="https://static-cdn.jtvnw.net/jtv_user_pictures/cantaloupez-profile_image-e9c9f11c97224a8c-300x300.jpeg" alt="Card image cap">
 			  <div class="card-body">
-			    <h5 class="card-title">Profile Name</h5>
-			    <p class="card-text">Real name</p>
+			  	<!-- ToDo:Need GitHUb User name-->
+			    <h5 class="card-title"></h5>
+			    <p class="card-text text-primary"><STRONG><%=@user.name%></STRONG></p>
 			  </div>
 			  <ul class="list-group list-group-flush">
-			    <li class="list-group-item">Email</li>
+			    <li class="list-group-item"><%=@user.email%></li>
 			  </ul>
 			  <div class="card-body">
-			  	<div class="github-card" data-github="nmaxey" data-width="300" data-height="100" data-theme="default"></div>
+			  	<!-- ToDo:Need GitHUb User name-->
+			  	<div class="github-card" data-github="nmaxey" data-width="275" data-height="100" data-theme="default"></div>
 			  </div>
 			</div>
 		</div>
-		<div class="col-lg-8">
+		<div class="col-lg-7">
 			<nav>
 			  <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
 			    <a class="nav-item nav-link active text-info" id="nav-Backing-tab" data-toggle="tab" href="#nav-Backing" role="tab" aria-controls="nav-Backing" aria-selected="true">Backing</a>
-			    <a class="nav-item nav-link text-info" id="nav-Projects-tab" data-toggle="tab" href="#nav-Projects" role="tab" aria-controls="nav-Projects" aria-selected="false">Projects</a>
+			    <a class="nav-item nav-link text-info text" id="nav-Projects-tab" data-toggle="tab" href="#nav-Projects" role="tab" aria-controls="nav-Projects" aria-selected="false">Projects</a>
 			    <a class="nav-item nav-link text-info" id="nav-Info-tab" data-toggle="tab" href="#nav-Info" role="tab" aria-controls="nav-Info" aria-selected="false">Info</a>
 			  </div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
-	  		<div class="tab-pane fade show active" id="nav-Backing" role="tabpanel" aria-labelledby="nav-Backing-tab">
-  				<div class="row justify-content-md-center">
-  					  <div class="col-lg-auto">
-  						<div class="github-card" data-github="nmaxey/flappy-bird-clone" data-width="500" data-height="200" data-theme="default"></div>
-  					</div>
-  					<div class="col-lg-auto">
-  						<div class="github-card" data-github="nmaxey/flappy-bird-clone" data-width="500" data-height="200" data-theme="default"></div>
-  					</div>
-  				</div>
-	  		</div>
-	  		<div class="tab-pane fade" id="nav-Projects" role="tabpanel" aria-labelledby="nav-Projects-tab">
-	  		Projects STUFF GOES 
-	  		<div class="embed-responsive embed-responsive-16by9">
-  				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe>
-			</div>
-	  		</div>
-	  		<div class="tab-pane fade" id="nav-Info" role="tabpanel" aria-labelledby="nav-Info-tab">
-	  		INFO STUFF GOES HERE
-	  		</div>
+		  		<div class="tab-pane fade show active" id="nav-Backing" role="tabpanel" aria-labelledby="nav-Backing-tab">
+		  		<%if @user.issue_transactions.any?%>
+				  <%= render 'tableSupporting' %>
+				<%else%>
+					<div class="row justify-content-center">
+						<button type="button" class="btn btn-outline-primary" id="btn_projects" onclick="location.href = '<%=explore_path%>';">Support Projects</button>
+					</div>
+				<%end%>
+				</div>
+		  		<div class="tab-pane fade" id="nav-Projects" role="tabpanel" aria-labelledby="nav-Projects-tab">
+				<%if @user.projects.any?%>
+				  <%= render 'tableProjects' %>
+				<%else%>
+					<div class="row justify-content-center">
+						<button type="button" class="btn btn-outline-primary" id="btn_projects" onclick="location.href = '<%=new_project_path%>';">Upload a Projects</button>
+					</div>
+				<%end%>
+		  		</div>
+		  		<div class="tab-pane fade" id="nav-Info" role="tabpanel" aria-labelledby="nav-Info-tab">
+		  			<div class="embed-responsive embed-responsive-16by9">
+	  					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe>
+		  		</div>
 		</div>
 	</div>
 </div>

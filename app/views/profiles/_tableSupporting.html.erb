@@ -8,13 +8,19 @@
           <div class="col"><%= '$' + issue_transactions.issue.project.total_funding.to_s + ' Pledged' %></div>
           <button type="button" id="btn_table" class="btn btn-outline-primary" onclick="location.href = '<%=project_path(issue_transactions.issue.project)%>';">Support</button>
         </div>
-        <div class="row justify-content-end">
-          <div class="card-text text-primary col-auto ">My support</div>
-          <div class="card-text text-primary text-right col-auto">$<%= issue_transactions.amount %></div>
-        </div>
-        <div class="row justify-content-between">
-          <div class="card-text"><%= issue_transactions.issue.project.description %></div>
-        </div>
+          <% if user_signed_in? && current_user === @user %>
+            <div class="row justify-content-end">
+              <div class="card-text text-primary col-auto ">My support</div>
+              <div class="card-text text-primary text-right col-auto">$<%= issue_transactions.amount %></div>
+            </div>
+            <div class="row justify-content-between">
+              <div class="card-text"><%= issue_transactions.issue.project.description %></div>
+            </div>
+          <%else%>
+            <div class="row justify-content-between">
+              <div class="card-text"><%= issue_transactions.issue.project.description %></div>
+            </div>
+          <% end %>
       </div>
   </div>
 <% end %>
