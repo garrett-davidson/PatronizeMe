@@ -1,6 +1,62 @@
 <% if user_signed_in? %>
-  ADD SOME FUNDS 
+ADD SOME FUNDS 
 <%else%>  
-  <!--ToDo: Change to login path-->
-  <script>window.location.href = "<%= root_path%>";</script>>
+<!--ToDo: Change to login path-->
+<!-- <script>window.location.href = "<%= root_path%>";</script>> -->
 <%end%>
+<p id="notice"><%= notice %></p>
+<div class="container">
+	<h1>Add funds</h1>
+	<hr>
+	<div class="row">
+		<div class="col-md-3">
+			<div class="card text-center">
+				<div class="card-body">
+					<h2 class="card-title">Add $5</h2>
+					<p class="card-text">Support your favorite projects. Adds $5 to your account balance.</p>
+					<a href="#" class="btn btn-primary active">Buy</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card text-center">
+				<div class="card-body">
+					<h2 class="card-title">Add $10</h2>
+					<p class="card-text">Support your favorite projects.  Adds $10 to your account balance.</p>
+					<a href="#" class="btn btn-primary active">Buy</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card text-center">
+				<div class="card-body">
+					<h2 class="card-title">Add $20</h2>
+					<p class="card-text">Support your favorite projects.  Adds $20 to your account balance.</p>
+					<a href="#" class="btn btn-primary active">Buy</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card text-center">
+				<div class="card-body">
+					<h2 class="card-title">Custom</h2>
+					<p class="card-text"></p>
+					<p class="card-text">Support your favorite projects with a custom amount of money. </p>
+					<a href="#" class="btn btn-primary active">Buy</a>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-md-12">
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label class="col-md-3 control-label"></label>
+					<div class="col-md-8">
+						<a href="<%=explore_path%>" class="btn btn-primary active" role="button" aria-pressed="true">Cancel</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<hr>
