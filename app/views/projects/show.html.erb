@@ -1,4 +1,27 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<div class="card">
+  <h5 class="card-header"><%=@project.name%></h5>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text"><%=@project.description%></p>
+    <p class="card-text"><%= pluralize(@project.supporters.count, 'supporter') %><%= '  $' + @project.total_funding.to_s + ' Pledged' %></p>
+    <%if @project.status == 1%>
+        <p class="card-text">Status: Open</p>
+    <%else%>
+        <p class="card-text">Status: Closed</p>
+    <%end%>
+    <a href="<%=@project.link%>" class="btn btn-primary active">GitHub</a>
+  </div>
+</div>
+<div class="card">
+  <h5 class="card-header">Issues</h5>
+  <div class="card-body">
+    <h5 class="card-title">Issue: 1</h5>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Issue: 2</h5>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Issue: 3</h5>
+  </div>
+</div>

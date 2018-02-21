@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
   ORDER_BY_SUPPORT = '(SELECT SUM("issue_transactions"."amount") FROM "issue_transactions" INNER JOIN "issues" ON "issue_transactions"."issue_id"= "issues"."id" WHERE "issues"."project_id" = projects.id) DESC'
   PROJECTS_PER_PAGE = 20
 
+
   # GET /projects
   # GET /projects.json
   def index
@@ -107,6 +108,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.fetch(:project, {})
+      params.fetch(:project, {}).permit(:name, :link, :description, :status)
     end
 end
