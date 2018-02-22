@@ -5,16 +5,14 @@
 			<div class="card border-light" style="width: 20rem;">
 			  <img class="card-img-top" src="https://static-cdn.jtvnw.net/jtv_user_pictures/cantaloupez-profile_image-e9c9f11c97224a8c-300x300.jpeg" alt="Card image cap">
 			  <div class="card-body">
-			  	<!-- ToDo:Need GitHUb User name-->
 			    <h5 class="card-title"></h5>
-			    <p class="card-text text-primary"><STRONG><%=@user.name%></STRONG></p>
+			    <p class="card-text text-primary"><STRONG><%=current_user.name%></STRONG></p>
 			  </div>
 			  <ul class="list-group list-group-flush">
-			    <li class="list-group-item"><%=@user.email%></li>
+			    <li class="list-group-item"><%=current_user.email%></li>
 			  </ul>
 			  <div class="card-body">
-			  	<!-- ToDo:Need GitHUb User name-->
-			  	<div class="github-card" data-github="nmaxey" data-width="275" data-height="100" data-theme="default"></div>
+			  	<div class="github-card" data-github="<%=current_user.username%>" data-width="275" data-height="100" data-theme="default"></div>
 			  </div>
 			</div>
 		</div>
@@ -28,7 +26,7 @@
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
 		  		<div class="tab-pane fade show active" id="nav-Backing" role="tabpanel" aria-labelledby="nav-Backing-tab">
-		  		<%if @user.issue_transactions.any?%>
+		  		<%if current_user.issue_transactions.any?%>
 				  <%= render 'tableSupporting' %>
 				<%else%>
 					<div class="row justify-content-center">
@@ -37,7 +35,7 @@
 				<%end%>
 				</div>
 		  		<div class="tab-pane fade" id="nav-Projects" role="tabpanel" aria-labelledby="nav-Projects-tab">
-				<%if @user.projects.any?%>
+				<%if current_user.projects.any?%>
 				  <%= render 'tableProjects' %>
 				<%else%>
 					<div class="row justify-content-center">
