@@ -4,11 +4,14 @@ class CallbacksController < Devise::OmniauthCallbacksController
 
     # check if user already exists
     if existing_user = User.find_by(provider: @user.provider, uid: @user.uid)
-      logger.debug 'Found existing user'
       sign_in existing_user
       redirect_to '/'
     else ActiveRecord::RecordNotFound
-      logger.debug 'Registering new user'
+      @provider = @user.provider
+      @uid = @user.uid
+      @email = @user.email
+      @username = @user.username
+      @name = @user.name
       render 'devise/registrations/new'
     end
   end

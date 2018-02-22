@@ -11,10 +11,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
    #POST /resource
    def create
-     user = params.permit 'user'
-     logger.debug 'in create'
-     logger.debug params
-     sign_in user
+     user_info = params.require(:user).permit(:name, :email, :provider, :uid, :username)
+
+     @user = User.new(user_info)
+     @user.password = Devise.friendly_token[0,20]
+
+     @user.save!
+     sign_in @user
      redirect_to '/'
 
    end
