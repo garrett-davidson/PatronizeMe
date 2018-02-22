@@ -10,20 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
    #POST /resource
-   def create
-     user = params.permit 'user'
-     logger.debug 'in create'
-     logger.debug params
-     sign_in user
-     redirect_to '/'
 
-   end
-
-  # GET /resource/edit
-  def edit
-    logger.debug @user.email
-    logger.debug "heljwlkejrwlkejrwle;kjralkwejr"
-  end
 
   # PUT /resource
   # def update
