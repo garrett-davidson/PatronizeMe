@@ -4,6 +4,7 @@ class CreateProjects < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :description
       t.integer :status
+      t.string :link
       t.belongs_to :owner, class_name: 'User'
 
       t.timestamps
