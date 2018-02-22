@@ -6,13 +6,13 @@ if [[ $# < 1 ]]; then
 fi
 #what happens locally
 if [[ $(hostname) != 'eridu' ]]; then
-    rsync -rve ssh --delete --exclude=tmp `pwd` $1@getpatronizeme.com:/home/pm/serverdeploy$1/
-    ssh $1@getpatronizeme.com bash "/home/pm/serverdeploy$1/PatronizeMe/deploy.sh $1"
+    rsync -rve ssh --delete --exclude=tmp `pwd` $1@getpatronizeme.com:/home/pm/serverdeploy/
+    ssh -t $1@getpatronizeme.com "sudo chown -R :patronizeme /home/pm/serverdeploy/PatronizeMe/* && /home/pm/serverdeploy/PatronizeMe/deploy.sh $1"
 fi
 #what happens remotely
 if [[ $(hostname) == 'eridu' ]]; then
 
-        SERVER_PATH="/home/pm/serverdeploy$1/PatronizeMe/"
+        SERVER_PATH="/home/pm/serverdeploy/PatronizeMe/"
 
         # Restart server
         echo 'Restarting server'
