@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'profile', to: 'profiles#show'
   get 'profile/index', to: 'profiles#index', as: "users"
   get 'profile/addfunds', to: 'profiles#addfunds'
-  get 'profile/setttings', to: 'profile#setttings'
+  get 'profile/settings', to: 'profiles#settings'
   get 'profile/:id', to: 'profiles#user', as: "user"
 
 
