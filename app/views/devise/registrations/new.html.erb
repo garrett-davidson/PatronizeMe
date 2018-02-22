@@ -1,29 +1,33 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+<p id="notice"><%= notice %></p>
+<%= form_for(@user, url:registration_path(@user)) do |f| %>
+<div class="container">
+    <h1>Finish Registration <%=@user.username%></h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-9 personal-info">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Full Name:</label>
+                    <div class="col-lg-8">
+                        <%= f.text_field :name, class: 'form-control'%>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Email Address:</label>
+                    <div class="col-lg-8">
+                        <%= f.text_field :email, class: 'form-control' %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-8">
+                        <%= f.submit "Save changes", class: "btn btn-large btn-primary", action: :post %>
+                        <a href="/" class="btn btn-primary active" role="button" aria-pressed="true">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
 <% end %>
-
-<%= render "devise/shared/links" %>

@@ -6,8 +6,8 @@ if [[ $# < 1 ]]; then
 fi
 #what happens locally
 if [[ $(hostname) != 'eridu' ]]; then
-    rsync -rve ssh --delete --exclude=tmp `pwd` $1@getpatronizeme.com:/home/pm/serverdeploy/
-    ssh -t $1@getpatronizeme.com "sudo chown -R :patronizeme /home/pm/serverdeploy/PatronizeMe/* && /home/pm/serverdeploy/PatronizeMe/deploy.sh $1"
+    rsync -rve ssh --delete --exclude=tmp --exclude=.git `pwd` $1@getpatronizeme.com:/home/pm/serverdeploy/
+    ssh -t $1@getpatronizeme.com "sudo chown -R :patronizeme /home/pm/serverdeploy/PatronizeMe/* && sudo chmod -R 777 /home/pm/serverdeploy/PatronizeMe/* && /home/pm/serverdeploy/PatronizeMe/deploy.sh $1"
 fi
 #what happens remotely
 if [[ $(hostname) == 'eridu' ]]; then
@@ -20,7 +20,7 @@ if [[ $(hostname) == 'eridu' ]]; then
         cd $SERVER_PATH
         PID=$(ps -aux | grep puma | awk  '{print $2}' | sed -sn 1p)
         echo $PID
-        kill -KILL $(ps -aux | grep puma | awk  '{print $2}' | sed -sn 1p)
+        kill -KILL $(ps -aux | grep puma | awk  '{print $2}' | sed -sn 2p)
         pwd
         bundle install
         bin/rails server
