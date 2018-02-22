@@ -6,6 +6,10 @@ class ProfilesController < ApplicationController
       		format.json { render json: @profiles }
     	end
 	end
+
+  def settings
+  end
+  
   def user
   	@user = User.find(params[:id])
   	@owner = User.find(params[:id])
@@ -21,8 +25,4 @@ class ProfilesController < ApplicationController
 
   def addfunds
   end
-
-  def settings
-  end
-
 end
