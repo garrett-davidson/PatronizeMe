@@ -6,8 +6,8 @@ if [[ $# < 1 ]]; then
 fi
 #what happens locally
 if [[ $(hostname) != 'eridu' ]]; then
-    rsync -rve ssh --delete --exclude=tmp `pwd` $1@getpatronizeme.com:/home/pm/serverdeploy/
-    ssh -t $1@getpatronizeme.com "sudo chown -R :patronizeme /home/pm/serverdeploy/PatronizeMe/* && /home/pm/serverdeploy/PatronizeMe/deploy.sh $1"
+    rsync -rve ssh --delete --exclude=tmp --exclude=.git `pwd` $1@getpatronizeme.com:/home/pm/serverdeploy/
+    ssh -t $1@getpatronizeme.com "sudo chown -R :patronizeme /home/pm/serverdeploy/PatronizeMe/* && sudo chmod -R 777 * && /home/pm/serverdeploy/PatronizeMe/deploy.sh $1"
 fi
 #what happens remotely
 if [[ $(hostname) == 'eridu' ]]; then
