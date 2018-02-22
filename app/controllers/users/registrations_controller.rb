@@ -23,10 +23,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
    end
 
   # GET /resource/edit
-  def edit
-    logger.debug @user.email
-    logger.debug "heljwlkejrwlkejrwle;kjralkwejr"
-  end
+  # def edit
+  #   super
+  # end
 
   # PUT /resource
   # def update
