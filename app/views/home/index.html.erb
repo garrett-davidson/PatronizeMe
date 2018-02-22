@@ -1,12 +1,4 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<% if user_signed_in? %>
-  <%= debug current_user %>
-  <div>Signed in as... <%= current_user.email %></div>
-  <div> <%= current_user.provider %> <%= current_user.uid %>  <%= current_user.email %> <%= current_user.password %> </div>
-<% else %>
-  <div>NOTHING</div>
-<% end %>
-<%= button_to "Sign out",  destroy_user_session_path, method: :delete, :style => "width:200px" %>
-<%= button_to "Sign in",   user_session_path, method: :post, :style => "width:200px" %>
-<%= button_to "Sign up",   new_user_registration_path, method: :get, :style => "width:200px" %>
+<h2 style="text-align: center; padding-top: 5%; padding-bottom: 4%;font-size: 400%;" >PatronizeMe</h2>
+
+<h2 style="text-align: center; padding-top: 5%; padding-bottom: 4%;font-size: 300%;" >Support all of your favorite open source software today</h2>
+<%= button_to "Explore", explore_url, :style => "width:200px; display: block; margin: 0 auto;",  :class => "btn btn-primary" , method: :get%>
