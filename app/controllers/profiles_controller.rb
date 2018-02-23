@@ -1,15 +1,13 @@
 class ProfilesController < ApplicationController
   PROJECTS_PER_PAGE = 10
 	def show
-		respond_to do |format|
-      		format.html { render :profile }
-      		format.json { render json: @profiles }
-    	end
+    redirect_to new_user_session_path unless user_signed_in?
 	end
 
   def settings
+    redirect_to new_user_session_path unless user_signed_in?
   end
-  
+
   def user
   	@user = User.find(params[:id])
   	@owner = User.find(params[:id])
@@ -24,5 +22,6 @@ class ProfilesController < ApplicationController
   end
 
   def addfunds
+        redirect_to new_user_session_path unless user_signed_in?
   end
 end
