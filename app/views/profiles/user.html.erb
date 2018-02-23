@@ -11,7 +11,7 @@
 					<li class="list-group-item"><%=@user.email%></li>
 				</ul>
 				<div class="card-body">
-					<div class="github-card" data-github="<%=current_user.username%>" data-width="275" data-height="100" data-theme="default"></div>
+					<div class="github-card" data-github="<%=@user.username%>" data-width="275" data-height="100" data-theme="default"></div>
 				</div>
 			</div>
 		</div>
@@ -57,5 +57,5 @@
 </div>
 <script>function Edit_Project(){location.href = "<%= edit_project_path() %>";} </script>
 	<script>
-		githubcard()
+		githubcard(document)
 	</script>
