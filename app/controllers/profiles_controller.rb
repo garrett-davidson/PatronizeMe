@@ -24,4 +24,11 @@ class ProfilesController < ApplicationController
   def addfunds
     redirect_to new_user_session_path unless user_signed_in?
   end
+
+  def updatesettings
+    test = params.require(:user).permit(:avatar, user_setting: [ :isPublic])
+    current_user.avatar = test[:avatar]
+    current_user.user_setting.update test[:user_setting]
+    current_user.save!
+  end
 end
