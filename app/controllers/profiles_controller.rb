@@ -1,16 +1,17 @@
 class ProfilesController < ApplicationController
   PROJECTS_PER_PAGE = 10
-	def show
+  def show
     redirect_to new_user_session_path unless user_signed_in?
-	end
+    render :profile
+  end
 
   def settings
     redirect_to new_user_session_path unless user_signed_in?
   end
 
   def user
-  	@user = User.find(params[:id])
-  	@owner = User.find(params[:id])
+    @user = User.find(params[:id])
+    @owner = User.find(params[:id])
     offset = params.permit(:p)[:p]&.to_i || 1
     # params[:id] comes from the URL: /users/:id
     @current_page = offset
@@ -18,10 +19,10 @@ class ProfilesController < ApplicationController
     offset -= 1
   end
   def index
-		@users = User.all
+    @users = User.all
   end
 
   def addfunds
-        redirect_to new_user_session_path unless user_signed_in?
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
