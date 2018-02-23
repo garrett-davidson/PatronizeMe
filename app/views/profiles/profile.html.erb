@@ -2,7 +2,7 @@
 	<div class="row align-items-top">
 		<div class="col-lg-auto offset-lg-1">
 			<div class="card border-light" style="width: 20rem;">
-				<img class="card-img-top" src="<%= @user.avatar.url(:thumb)%>" alt="Card image cap">
+				<img class="card-img-top" src="<%= current_user.avatar.url(:thumb)%>" alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title"></h5>
 					<p class="card-text text-primary"><STRONG><%=current_user.name%></STRONG></p>
@@ -51,6 +51,8 @@
 				</div>
 			</div>
 		</div>
-		<script>
-			githubcard()
-		</script>
+	</div>
+</div>
+<script>
+	githubcard()
+</script>
