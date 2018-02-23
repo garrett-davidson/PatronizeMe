@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'profile/settings', to: 'profiles#settings'
   get 'profile/:id', to: 'profiles#user', as: "user"
 
+  patch 'profile/:id', to: 'profiles#updatesettings'
 
   resources :projects
   get 'home/index'

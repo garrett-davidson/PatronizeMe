@@ -15,6 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
      @user = User.new(user_info)
      @user.password = Devise.friendly_token[0,20]
+     @user.user_setting = UserSetting.new
 
      @user.save!
      sign_in @user
