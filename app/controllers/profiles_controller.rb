@@ -26,9 +26,12 @@ class ProfilesController < ApplicationController
   end
 
   def updatesettings
-    test = params.require(:user).permit(:avatar, user_setting: [ :isPublic])
-    current_user.avatar = test[:avatar]
-    current_user.user_setting.update test[:user_setting]
+    settings = params.require(:user).permit(:avatar, user_setting: [ :isPublic])
+    if (settings[:avatar] != nil ) 
+      current_user.avatar = settings[:avatar]
+    end
+    current_user.user_setting.update settings[:user_setting]
     current_user.save!
+    redirect_to profile_path
   end
 end
