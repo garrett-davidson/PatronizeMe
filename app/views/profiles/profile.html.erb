@@ -1,57 +1,58 @@
 <div class="container-fluid">
 	<div class="row align-items-top">
-	    <div class="col-lg-auto offset-lg-1">
+		<div class="col-lg-auto offset-lg-1">
 			<div class="card border-light" style="width: 20rem;">
-        <td><%= image_tag current_user.avatar.url(:thumb) %></td>
-			  <div class="card-body">
-			    <h5 class="card-title"></h5>
-			    <p class="card-text text-primary"><STRONG><%=current_user.name%></STRONG></p>
-			  </div>
-			  <ul class="list-group list-group-flush">
-			    <li class="list-group-item"><%=current_user.email%></li>
-			  </ul>
-			  <div class="card-body">
-			  	<div class="github-card" data-github="<%=current_user.username%>" data-width="275" data-height="100" data-theme="default"></div>
-			  </div>
-			</div>
-		</div>
-	</div>
-	<div class="col-lg-7">
-		<nav>
-			<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-				<a class="nav-item nav-link active text-info" id="nav-Backing-tab" data-toggle="tab" href="#nav-Backing" role="tab" aria-controls="nav-Backing" aria-selected="true">Backing</a>
-				<a class="nav-item nav-link text-info text" id="nav-Projects-tab" data-toggle="tab" href="#nav-Projects" role="tab" aria-controls="nav-Projects" aria-selected="false">Projects</a>
-				<a class="nav-item nav-link text-info" id="nav-Info-tab" data-toggle="tab" href="#nav-Info" role="tab" aria-controls="nav-Info" aria-selected="false">Info</a>
-			</div>
-		</nav>
-		<div class="tab-content" id="nav-tabContent">
-			<div class="tab-pane fade show active" id="nav-Backing" role="tabpanel" aria-labelledby="nav-Backing-tab">
-				<%if current_user.issue_transactions.any?%>
-				<%= render 'tableSupporting' %>
-				<%else%>
-				<div class="row justify-content-center">
-					<button type="button" class="btn btn-outline-primary" id="btn_projects" onclick="location.href = '<%=explore_path%>';
-					">Support Projects</button>
+				<img class="card-img-top" src="<%= current_user.avatar.url(:thumb)%>" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title"></h5>
+					<p class="card-text text-primary"><STRONG><%=current_user.name%></STRONG></p>
 				</div>
-				<%end%>
-			</div>
-			<div class="tab-pane fade" id="nav-Projects" role="tabpanel" aria-labelledby="nav-Projects-tab">
-				<%if current_user.projects.any?%>
-				<%= render 'tableProjects' %>
-				<%else%>
-				<div class="row justify-content-center">
-					<button type="button" class="btn btn-outline-primary" id="btn_projects" onclick="location.href = '<%=new_project_path%>';
-					">Upload a Projects</button>
-				</div>
-				<%end%>
-			</div>
-			<div class="tab-pane fade" id="nav-Info" role="tabpanel" aria-labelledby="nav-Info-tab">
-				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item"><%=current_user.email%></li>
+				</ul>
+				<div class="card-body">
+					<div class="github-card" data-github="<%=current_user.username%>" data-width="275" data-height="100" data-theme="default"></div>
 				</div>
 			</div>
 		</div>
+		<div class="col-lg-7">
+			<nav>
+				<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+					<a class="nav-item nav-link active text-info" id="nav-Backing-tab" data-toggle="tab" href="#nav-Backing" role="tab" aria-controls="nav-Backing" aria-selected="true">Backing</a>
+					<a class="nav-item nav-link text-info text" id="nav-Projects-tab" data-toggle="tab" href="#nav-Projects" role="tab" aria-controls="nav-Projects" aria-selected="false">Projects</a>
+					<a class="nav-item nav-link text-info" id="nav-Info-tab" data-toggle="tab" href="#nav-Info" role="tab" aria-controls="nav-Info" aria-selected="false">Info</a>
+				</div>
+			</nav>
+			<div class="tab-content" id="nav-tabContent">
+				<div class="tab-pane fade show active" id="nav-Backing" role="tabpanel" aria-labelledby="nav-Backing-tab">
+					<%if current_user.issue_transactions.any?%>
+					<%= render 'tableSupporting' %>
+					<%else%>
+					<div class="row justify-content-center">
+						<button type="button" class="btn btn-outline-primary" id="btn_projects" onclick="location.href = '<%=explore_path%>';
+						">Support Projects</button>
+					</div>
+					<%end%>
+				</div>
+				<div class="tab-pane fade" id="nav-Projects" role="tabpanel" aria-labelledby="nav-Projects-tab">
+					<%if current_user.projects.any?%>
+					<%= render 'tableProjects' %>
+					<%else%>
+					<div class="row justify-content-center">
+						<button type="button" class="btn btn-outline-primary" id="btn_projects" onclick="location.href = '<%=new_project_path%>';
+						">Upload a Projects</button>
+					</div>
+					<%end%>
+				</div>
+				<div class="tab-pane fade" id="nav-Info" role="tabpanel" aria-labelledby="nav-Info-tab">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<script>
-		githubcard(document)
-	</script>
+</div>
+<script>
+	githubcard(document)
+</script>

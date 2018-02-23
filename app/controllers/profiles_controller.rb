@@ -1,8 +1,7 @@
 class ProfilesController < ApplicationController
   PROJECTS_PER_PAGE = 10
-  def show
+  def profile
     redirect_to new_user_session_path unless user_signed_in?
-    render :profile
   end
 
   def settings
