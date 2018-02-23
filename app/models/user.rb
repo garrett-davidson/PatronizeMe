@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:github]
   has_many :projects, inverse_of: :owner, foreign_key: 'owner_id'
   has_many :issue_transactions, inverse_of: :user
+  has_one :user_setting
 
   def self.from_omniauth(auth)
       user = User.new
@@ -17,7 +18,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
       user.username = auth.info.nickname
       user.name = auth.info.name
-      
+
       user
   end
 

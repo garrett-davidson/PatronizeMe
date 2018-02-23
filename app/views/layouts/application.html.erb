@@ -21,7 +21,7 @@
       <form class="form-inline">
         <% if user_signed_in? %>
         <li class="input-group-prepend">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href = '<%=profile_addfunds_path%>'">$</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right:10px" type="button" onclick="location.href = '<%=profile_addfunds_path%>'">$</button>
           <span class="input-group-text"><%= '%.2f' % current_user.balance%></span>
         </li>
         <% end %>
