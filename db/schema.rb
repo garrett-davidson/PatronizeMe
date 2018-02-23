@@ -43,23 +43,27 @@ ActiveRecord::Schema.define(version: 20180223022706) do
     t.string "name"
     t.string "description"
     t.integer "status"
+    t.string "link"
     t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "link"
     t.index ["owner_id"], name: "index_projects_on_owner_id"
   end
 
   create_table "user_settings", force: :cascade do |t|
-    t.integer "userid"
-    t.boolean "isPublic"
+    t.bigint "user_id"
+    t.boolean "isPublic", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_settings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.float "balance"
+    t.float "balance", default: 0.0, null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -72,9 +76,6 @@ ActiveRecord::Schema.define(version: 20180223022706) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "provider"
-    t.string "uid"
-    t.string "username"
     t.string "avatar_file_name"
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
