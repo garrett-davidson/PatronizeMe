@@ -18,12 +18,11 @@
         <li class="nav-item active">
           <a class="nav-link" href="<%= explore_path%>">Explore<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
       </ul>
+
+
+
       <form class="form-inline">
-        <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" id="navsearchbar">
         <% if user_signed_in? %>
         <li class="input-group-prepend">
           <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href = '<%=profile_addfunds_path%>'">$</button>
