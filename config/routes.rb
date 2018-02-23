@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'explore', to: 'projects#explore'
   get 'search', to: 'projects#search'
-  get 'profile', to: 'profiles#show'
+  get 'profile', to: 'profiles#profile'
   get 'profile/index', to: 'profiles#index', as: "users"
   get 'profile/addfunds', to: 'profiles#addfunds'
   get 'profile/settings', to: 'profiles#settings'
