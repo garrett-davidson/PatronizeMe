@@ -13,3 +13,38 @@ combo:
   owner: garrett
   status: 0
   created_at: <%= Time.now + 1 %>
+
+automerge:
+  name: automerger
+  description: A JSON-like data structure that can be modified concurrently by different users, and merged again automatically.
+  owner: noah
+  status: 0
+  created_at: <%= Time.now + 100000 %>
+
+carbon:
+  name: carbon
+  description: 🎨 Create and share beautiful images of your source code.
+  owner: noah
+  status: 0
+  created_at: <%= Time.now + 200000 %>
+
+caire:
+  name: caire
+  description: Content aware image resize library
+  owner: noah
+  status: 0
+  created_at: <%= Time.now + 300000 %>
+
+Blazor:
+  name: Blazor
+  description: An experimental web UI framework using C#/Razor and HTML, running in the browser via WebAssembly
+  owner: riley
+  status: 0
+  created_at: <%= Time.now + 325000 %>
+
+Perspective:
+  name: Perspective
+  description: Streaming pivot visualization via WebAssembly
+  owner: kenny
+  status: 0
+  created_at: <%= Time.now + 3000 %>

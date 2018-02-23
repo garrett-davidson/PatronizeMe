@@ -13,3 +13,39 @@ inshallah:
   status: 0
   parent: null
   project: combo
+
+blazorruntime:
+  name: Blazor Runtime Culture
+  description: Please consider browser runtime cultural and allow switching of culture with in the Blazor environment.
+  status: 0
+  parent: null
+  project: Blazor
+
+caching:
+  name: Caching
+  description: Please consider how Blazor could request or inject content/embedded resources into a browser cache form display rendering ie. images, fonts, etc
+  status: 0
+  parent: null
+  project: Blazor
+
+samples:
+  name: Samples fail under IIS
+  description: Samples fail on IIS. If hosting samples in IIS, they fail because there is no mime type for the WASM extension
+  status: 0
+  parent: null
+  project: Blazor
+
+optimize:
+  name: Optimize download size
+  description: Optimize Mono runtime (wasm, asm.js)
+  status: 0
+  parent: null
+  project: Blazor
+
+
+publishing:
+  name: Publishing
+  description: Linking (combining and stripping assemblies, eliminating facades)
+  status: 0
+  parent: null
+  project: Blazor
