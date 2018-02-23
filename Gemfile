@@ -66,3 +66,8 @@ gem 'bootstrap-social-rails'
 
 # jquery
 gem 'jquery-rails'
+
+# paperclip for profile images etc
+# from http://www.peoplecancode.com/tutorials/users-avatars-uploading-images-using-paperclip
+gem 'paperclip'
+

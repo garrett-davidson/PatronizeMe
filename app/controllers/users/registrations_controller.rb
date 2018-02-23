@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
    #POST /resource
    def create
-     user_info = params.require(:user).permit(:name, :email, :provider, :uid, :username)
+     user_info = params.require(:user).permit(:name, :email, :provider, :uid, :username, :avatar)
 
      @user = User.new(user_info)
      @user.password = Devise.friendly_token[0,20]
@@ -49,9 +49,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+   def configure_sign_up_params
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar])
+   end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
