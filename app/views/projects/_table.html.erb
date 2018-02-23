@@ -7,7 +7,7 @@
         <div class="col-3"><strong><%= project.name %></strong></div>
         <div class="col-2"><%= pluralize(project.supporters.count, 'supporter') %></div>
         <div class="col"><%= '$' + project.total_funding.to_s + ' Pledged' %></div>
-        <%= button_to 'Support', '/', class: 'btnb' %>
+        <%= button_to "Support", project_path(project), method: 'get', class: 'btnb' %>
       </div>
       <div class="row">
         <div class="card-text"><%= project.description %></div>
