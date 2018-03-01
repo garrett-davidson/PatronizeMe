@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   patch 'profile/:id', to: 'profiles#updatesettings'
 
+  resources :charges
+
   resources :projects
   get 'home/index'
 

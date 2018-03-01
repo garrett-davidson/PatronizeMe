@@ -51,11 +51,10 @@ ActiveRecord::Schema.define(version: 20180223022706) do
   end
 
   create_table "user_settings", force: :cascade do |t|
-    t.bigint "user_id"
-    t.boolean "isPublic", default: true, null: false
+    t.integer "userid"
+    t.boolean "isPublic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_settings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
