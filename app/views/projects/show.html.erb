@@ -1,27 +1,58 @@
 <p id="notice"><%= notice %></p>
 <div class="card">
-  <h5 class="card-header"><%=@project.name%></h5>
+  <h3 class="card-header"><%=@project.name%></h3>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
+    <h4 class="card-title">Special title treatment</h4>
     <p class="card-text"><%=@project.description%></p>
     <p class="card-text"><%= pluralize(@project.supporters.count, 'supporter') %><%= '  $' + @project.total_funding.to_s + ' Pledged' %></p>
     <%if @project.status == 1%>
-        <p class="card-text">Status: Open</p>
+    <p class="card-text">Status: Open</p>
     <%else%>
-        <p class="card-text">Status: Closed</p>
+    <p class="card-text">Status: Closed</p>
     <%end%>
     <a href="<%=@project.link%>" class="btn btn-primary active">GitHub</a>
   </div>
 </div>
 <div class="card">
-  <h5 class="card-header">Issues</h5>
-  <div class="card-body">
-    <h5 class="card-title">Issue: 1</h5>
+  <h3 class="card-header">Issues</h3>
+  <% @project.issues.each do |issue| %>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title"><%=issue.name%></h3>
+      <%if issue.status == 0%>
+      <h6 class="card-subtitle mb-2 text-muted">Closed</h6>
+      <%else%>
+      <h6 class="card-subtitle mb-2 ">Open</h6>
+      <%end%>
+      <div class="row align-items-center">
+        <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
+        <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
+        <h6 class="card-text font-weight-normal col-9">Pledged: $<%=issue.total_funding%></h6>
+        <button type="button" class="btn btn-success col-1" data-toggle="modal" data-target="#exampleModalCenter">
+          Support
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-    <h5 class="card-title">Issue: 2</h5>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Issue: 3</h5>
+  <% end %>
+</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>
