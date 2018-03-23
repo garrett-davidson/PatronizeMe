@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :provider
       t.string :uid
       t.string :username
+      t.string :github_username
 
       t.timestamps
     end
