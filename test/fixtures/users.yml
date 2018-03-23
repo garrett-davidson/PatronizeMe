@@ -4,6 +4,7 @@ garrett:
   name: Garrett Davidson
   balance: 0
   email: my@email.com
+  github_username: garrett-davidson
 
 richard:
   name: Richie Banks

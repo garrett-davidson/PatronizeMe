@@ -6,7 +6,7 @@
           <a href="<%=issue_transactions.issue.project.link%>" class="col-3 card-link"><%= issue_transactions.issue.project.name %></a>
           <div class="col-2"><%= pluralize(issue_transactions.issue.project.supporters.count, 'supporter') %></div>
           <div class="col"><%= '$' + issue_transactions.issue.project.total_funding.to_s + ' Pledged' %></div>
-          <button type="button" id="btn_table" class="btn btn-outline-primary" onclick="location.href = '<%=project_path(issue_transactions.issue.project)%>';">Support</button>
+          <button type="button" id="btn_table" class="btn btn-outline-primary" onclick="location.href = '<%=project_path(issue_transactions.issue.project)%>';">View</button>
         </div>
           <% if user_signed_in? && current_user === @user %>
             <div class="row justify-content-end">
