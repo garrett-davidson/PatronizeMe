@@ -59,13 +59,21 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <% if user_signed_in? %>
         <h5 class="modal-title" id="exampleModalLongTitle">Supporting</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <%else%>
+        <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%end%>
       </div>
+      <% if user_signed_in? %>
       <div class="modal-body">
-        You are supporting this issue. You can take out your money as long as the issue has not been started.
+        You can take out your money as long as the issue has not been started.
         <div class="modal-footer">
           <div class="input-group">
             <div class="input-group-prepend">
@@ -80,8 +88,17 @@
           <button type="button" class="btn btn-primary">Support</button>
         </div>
       </div>
+      <%else%>
+      <div class="modal-body">
+        You need to be signed in to support a project.
+       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+        <a href="<%=new_user_session_path%>" class="btn btn-primary active">Sign Up</a>
+      </div>
     </div>
+    <%end%>
   </div>
+</div>
 </div>
 <div class="modal fade" id="ModalCenterCancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
