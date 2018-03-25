@@ -22,7 +22,7 @@
       <form class="form-inline">
         <% if user_signed_in? %>
         <li class="input-group-prepend">
-          <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right:10px" type="button" onclick="location.href = '<%=profile_addfunds_path%>'">$</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right:10px" type="button" onclick="location.href = '<%=new_charge_path%>'">$</button>
           <span class="input-group-text"><%= '%.2f' % current_user.balance%></span>
         </li>
         <% end %>
@@ -36,7 +36,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="<%= profile_path %>">Profile</a>
-            <a class="dropdown-item" href="<%= profile_addfunds_path %>">Add Funds</a>
+            <a class="dropdown-item" href="<%= new_charge_path %>">Add Funds</a>
             <a class="dropdown-item" href="<%= profile_settings_path %>">Settings</a>
             <!-- ToDo: Whateverthe sign out path is-->
             <%= button_to "Sign Out",  destroy_user_session_path, method: :delete, class: 'dropdown-item'%>

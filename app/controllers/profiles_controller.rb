@@ -17,6 +17,10 @@ class ProfilesController < ApplicationController
     @page_count = (@user.issue_transactions.count / PROJECTS_PER_PAGE.to_f).ceil
     offset -= 1
   end
+
+  def github_projects
+  end
+
   def index
     @users = User.all
   end
