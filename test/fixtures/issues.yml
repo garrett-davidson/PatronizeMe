@@ -17,7 +17,7 @@ inshallah:
 blazorruntime:
   name: Blazor Runtime Culture
   description: Please consider browser runtime cultural and allow switching of culture with in the Blazor environment.
-  status: 0
+  status: 1
   parent: null
   project: Blazor
 
@@ -38,7 +38,7 @@ samples:
 optimize:
   name: Optimize download size
   description: Optimize Mono runtime (wasm, asm.js)
-  status: 0
+  status: 1
   parent: null
   project: Blazor
 
