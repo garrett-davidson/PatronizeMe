@@ -19,9 +19,9 @@
   <div class="card">
     <div class="card-body">
       <a href="<%=@project.link%>\issues\<%=issue.id%>" class="card-link"><%=issue.name%></a>
-      <%if issue.status == 1%>
+      <%if issue.status == 0%>
       <h5 class="card-subtitle mb-2">Open</h5>
-      <% elsif issue.status == 2%>
+      <% elsif issue.status == 1%>
       <h5 class="card-subtitle mb-2 ">Working on</h5>
       <%else%>
       <h5 class="card-subtitle mb-2 text-muted">Closed</h5>
@@ -32,18 +32,22 @@
         <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
         <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding%></h6>
         <h6 class="card-text font-weight-normal col-2">My pledge: $<%=issue.total_funding%></h6>
-        <button type="button" class="btn btn-danger col-1" data-toggle="modal" data-target="#ModalCenterCancel">
-          Cancel Support
-        </button>
+        <%if issue.status == 0%>
+          <button type="button" class="btn btn-danger col-1" data-toggle="modal" data-target="#ModalCenterCancel">
+            Cancel Support
+          </button>
+        <%end%>
       </div>
       <%else%>
       <div class="row align-items-center">
         <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
         <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
         <h6 class="card-text font-weight-normal col-9">Pledged: $<%=issue.total_funding%></h6>
+        <%if issue.status == 0%>
         <button type="button" class="btn btn-success col-1" data-toggle="modal" data-target="#ModalCenter">
           Support
         </button>
+        <%end%>
       </div>
       <%end%>
     </div>
@@ -59,13 +63,21 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <% if user_signed_in? %>
         <h5 class="modal-title" id="exampleModalLongTitle">Supporting</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <%else%>
+        <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%end%>
       </div>
+      <% if user_signed_in? %>
       <div class="modal-body">
-        You are supporting this issue. You can take out your money as long as the issue has not been started.
+        You can take out your money as long as the issue has not been started.
         <div class="modal-footer">
           <div class="input-group">
             <div class="input-group-prepend">
@@ -80,8 +92,17 @@
           <button type="button" class="btn btn-primary">Support</button>
         </div>
       </div>
+      <%else%>
+      <div class="modal-body">
+        You need to be signed in to support a project.
+       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+        <a href="<%=new_user_session_path%>" class="btn btn-primary active">Sign Up</a>
+      </div>
     </div>
+    <%end%>
   </div>
+</div>
 </div>
 <div class="modal fade" id="ModalCenterCancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
