@@ -2,7 +2,7 @@
   <div class="card ">
       <div class="card-body flex-justify-between">
         <div class="row">
-          <%= image_tag profile_picture_path(issue_transactions.issue.project.owner), size: '50x50' %>
+          <%= image_tag profile_picture_path(@user), size: '50x50' %>
           <a href="<%=issue_transactions.issue.project.link%>" class="col-3 card-link"><%= issue_transactions.issue.project.name %></a>
           <div class="col-2"><%= pluralize(issue_transactions.issue.project.supporters.count, 'supporter') %></div>
           <div class="col"><%= '$' + issue_transactions.issue.project.total_funding.to_s + ' Pledged' %></div>
