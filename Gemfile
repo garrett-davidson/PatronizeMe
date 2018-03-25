@@ -72,3 +72,7 @@ gem 'jquery-rails'
 # paperclip for profile images etc
 # from http://www.peoplecancode.com/tutorials/users-avatars-uploading-images-using-paperclip
 gem 'paperclip'
+
+# restclient setup
+# from https://www.learnhowtoprogram.com/rails/building-an-e-commerce-site-with-ajax-and-apis/making-api-calls-in-rails
+gem 'rest-client'

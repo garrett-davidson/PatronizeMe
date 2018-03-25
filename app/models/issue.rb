@@ -4,4 +4,8 @@ class Issue < ApplicationRecord
   has_many :children, class_name: :issue
   has_many :issue_transactions, inverse_of: :issue
   has_many :supporters, source: :user, through: :issue_transactions
+
+  def total_funding
+    issue_transactions.sum('amount')
+  end
 end

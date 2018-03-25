@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'rest-client'
 
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
@@ -20,6 +21,8 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @response = RestClient.get('https://api.github.com/users/'+ current_user.username + '/repos')
+    logger.debug @response
   end
 
   # GET /projects/1/edit
