@@ -13,6 +13,7 @@
     <a href="<%=@project.link%>" class="btn btn-primary active">GitHub</a>
   </div>
 </div>
+<%if @project.issues.any? %>
 <div class="card">
   <h3 class="card-header">Issues</h3>
   <% @project.issues.each do |issue| %>
@@ -54,11 +55,7 @@
   </div>
   <% end %>
 </div>
-
-
-
-
-
+<%end%>
 <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
