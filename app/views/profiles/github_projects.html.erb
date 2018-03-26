@@ -1,7 +1,15 @@
-<h1>New Project</h1>
-
-<%= render 'form', project: @project %>
-
-<%= link_to 'Back', projects_path %>
-
-<%= debug @response.body %>
+<h1>Select Project</h1>
+<div class="card-columns">
+  <% @projects.each do |project| %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= project['name'] %></h5>
+      <p class="card-text"><%= project['description'] %></p>
+      <%= button_to "Add Project", new_project_path, :style => "width:200px; display: block; margin: 0 auto;",  :class => "btn btn-primary salmon-color" , method: :get, :params => {:id => project['id']} %>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Created <%= project['created_at'] %></small>
+    </div>
+  </div>
+  <% end %>
+</div>

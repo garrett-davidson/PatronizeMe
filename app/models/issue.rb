@@ -8,4 +8,12 @@ class Issue < ApplicationRecord
   def total_funding
     issue_transactions.sum('amount')
   end
+
+  def self.new_from_json(json)
+    Issue.new(name: json['title'],
+              description: json['body'],
+              status: json['state'] == 'open' ? 1 : 0,
+              created_at: json['created_at'],
+              updated_at: json['updated_at'])
+  end
 end
