@@ -31,11 +31,10 @@ ActiveRecord::Schema.define(version: 20180223022706) do
     t.string "name"
     t.string "description"
     t.integer "status"
-    t.bigint "parent_id"
+    t.integer "github_id"
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["parent_id"], name: "index_issues_on_parent_id"
     t.index ["project_id"], name: "index_issues_on_project_id"
   end
 
@@ -60,7 +59,7 @@ ActiveRecord::Schema.define(version: 20180223022706) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.float "balance", default: 0.0, null: false
+    t.integer "balance", default: 0, null: false
     t.string "provider"
     t.string "uid"
     t.string "username"
