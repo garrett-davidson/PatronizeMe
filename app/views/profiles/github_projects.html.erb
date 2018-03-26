@@ -5,7 +5,7 @@
     <div class="card-body">
       <h5 class="card-title"><%= project['name'] %></h5>
       <p class="card-text"><%= project['description'] %></p>
-      <%= button_to "Add Project", new_project_path, :style => "width:200px; display: block; margin: 0 auto;",  :class => "btn btn-primary salmon-color" , method: :get, :params => {:id => project['id']} %>
+      <%= button_to "Add Project", new_project_path, :style => "width:200px; display: block; margin: 0 auto;",  :class => "btn btn-primary salmon-color" , method: :get, :params => {:name => project['full_name']} %>
     </div>
     <div class="card-footer">
       <small class="text-muted">Created <%= project['created_at'] %></small>

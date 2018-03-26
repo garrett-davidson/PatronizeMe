@@ -20,12 +20,18 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new # TODO: Set project here
-    @id = params[:id]
-    @response = RestClient.get('https://api.github.com/projects/' + @id)
-    @project_info = JSON.parse(@response.body)
+    @project = Project.new
+    full_name = params[:name]
+    project_info = JSON.parse(RestClient.get('https://api.github.com/repos/' + full_name).body)
 
+    @project.owner = current_user
+    @project.description = project_info['description']
+    @project.id = project_info['id']
+    @project.name = project_info['name']
+    @project.link = project_info['full_name']
     @project.fetch_issues
+    @project.status = 1
+    @project.save!
   end
 
   # GET /projects/1/edit
