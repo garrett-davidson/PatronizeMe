@@ -1,11 +1,13 @@
-class ChargesController < ApplicationController
+# app/controllers/charges_controller.rb
 
+class ChargesController < ApplicationController
   def new
   end
 
   def create
     # Amount in cents
-    @amount = 500
+    @params = params
+    @amount = params[:amt]
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -23,6 +25,4 @@ class ChargesController < ApplicationController
     flash[:error] = e.message
     redirect_to new_charge_path
   end
-
-
 end
