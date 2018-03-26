@@ -2,7 +2,7 @@
 <div class="card">
   <h3 class="card-header"><%=@project.name%></h3>
   <div class="card-body">
-    <h4 class="card-title"><%=@project.owner.name%></h4>
+    <a href="<%=user_path(@project.owner)%>" class="card-link"><%=@project.owner.username%></a>
     <p class="card-text"><%=@project.description%></p>
     <p class="card-text"><%= pluralize(@project.supporters.count, 'supporter') %><%= '  $' + @project.total_funding.to_s + ' Pledged' %></p>
     <%if @project.status == 1%>
@@ -19,9 +19,9 @@
   <div class="card">
     <div class="card-body">
       <a href="<%=@project.link%>\issues\<%=issue.id%>" class="card-link"><%=issue.name%></a>
-      <%if issue.status == 0%>
+      <%if issue.status == 1%>
       <h5 class="card-subtitle mb-2">Open</h5>
-      <% elsif issue.status == 1%>
+      <% elsif issue.status == 2%>
       <h5 class="card-subtitle mb-2 ">Working on</h5>
       <%else%>
       <h5 class="card-subtitle mb-2 text-muted">Closed</h5>
@@ -32,7 +32,7 @@
         <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
         <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding%></h6>
         <h6 class="card-text font-weight-normal col-2">My pledge: $<%=issue.total_funding%></h6>
-        <%if issue.status == 0%>
+        <%if issue.status == 1%>
         <button type="button" class="btn btn-danger col-1" data-toggle="modal" data-target="#ModalCenterCancel">
           Cancel Support
         </button>
@@ -43,7 +43,7 @@
         <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
         <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
         <h6 class="card-text font-weight-normal col-9">Pledged: $<%=issue.total_funding%></h6>
-        <%if issue.status == 0%>
+        <%if issue.status == 1%>
         <button type="button" class="btn btn-success col-1" data-toggle="modal" data-target="#ModalCenter">
           Support
         </button>
