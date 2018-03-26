@@ -26,30 +26,26 @@
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-Backing" role="tabpanel" aria-labelledby="nav-Backing-tab">
           <%if current_user.issue_transactions.any?%>
-            <%= render 'tableSupporting' %>
-            <%else%>
-            <div class="row justify-content-center">
-              <button type="button" class="btn btn-outline-primary" id="btn_projects" onclick="location.href = '<%=explore_path%>'">Support Projects</button>
-            </div>
-            <%end%>
-        </div>
-        <div class="tab-pane fade" id="nav-Projects" role="tabpanel" aria-labelledby="nav-Projects-tab">
-          <%if current_user.projects.any?%>
-            <%= render 'tableProjects' %>
-            <%else%>
-            <div class="row justify-content-center">
-              <button type="button" class="btn btn-outline-primary" id="btn_projects" onclick="location.href = 'github_projects'">Upload a Project</button>
-            </div>
-            <%end%>
-        </div>
-        <div class="tab-pane fade" id="nav-Info" role="tabpanel" aria-labelledby="nav-Info-tab">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          <%= render 'tableSupporting' %>
+          <%else%>
+          <div class="row justify-content-center">
+           <button type="button" class="btn btn-outline-primary" id="btn_projects" onclick="location.href = '<%=explore_path%>'">Support Projects</button>
+         </div>
+         <%end%>
+       </div>
+       <div class="tab-pane fade" id="nav-Projects" role="tabpanel" aria-labelledby="nav-Projects-tab">
+        <%if current_user.projects.any?%>
+          <%= render 'tableProjects' %>
+        <%end%>
+        <div class="row justify-content-center">
+         <button type="button" class="btn btn-outline-primary" id="btn_projects" onclick="location.href = '<%=profile_githubprojects_path%>'">Upload a Project</button>
+       </div>
+     </div>
+     <div class="tab-pane fade" id="nav-Info" role="tabpanel" aria-labelledby="nav-Info-tab">
+   </div>
+ </div>
+</div>
+</div>
 </div>
 <script>
   githubcard(document)

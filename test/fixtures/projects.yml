@@ -6,20 +6,23 @@ pm:
   owner: garrett
   status: 0
   created_at: <%= Time.now %>
+  link: garrett-davidson/PatronizeMe
 
-combo:
-  name: Combo
+ILikeMusic:
+  name: ILikeMusic
   description: Another really awesome new website
   owner: garrett
   status: 0
   created_at: <%= Time.now + 1 %>
+  link: garrett-davidson/iLikeMusic
 
-automerge:
-  name: automerger
+Flappy:
+  name: Flappy-bird-clone
   description: A JSON-like data structure that can be modified concurrently by different users, and merged again automatically.
   owner: noah
   status: 0
   created_at: <%= Time.now + 100000 %>
+  link: nmaxey/Flappy-bird-clone
 
 carbon:
   name: carbon
@@ -27,6 +30,7 @@ carbon:
   owner: noah
   status: 0
   created_at: <%= Time.now + 200000 %>
+  link: nmaxey/Identity
 
 caire:
   name: caire
@@ -34,17 +38,20 @@ caire:
   owner: noah
   status: 0
   created_at: <%= Time.now + 300000 %>
+  link: nmaxey/linked-list
 
-Blazor:
-  name: Blazor
+Evolve:
+  name: Evolve
   description: An experimental web UI framework using C#/Razor and HTML, running in the browser via WebAssembly
   owner: riley
   status: 0
   created_at: <%= Time.now + 325000 %>
+  link: rileyshaw/Evolve
 
-Perspective:
-  name: Perspective
+MultiSand:
+  name: MultiSand
   description: Streaming pivot visualization via WebAssembly
   owner: kenny
   status: 0
   created_at: <%= Time.now + 3000 %>
+  link: rileyshaw/MultiSand

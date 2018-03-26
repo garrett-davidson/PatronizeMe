@@ -1,73 +1,111 @@
 <p id="notice"><%= notice %></p>
 <%= form_for(@project) do |f| %>
-<div class="container">
-	<h1>Editing Project <%=@project.name%></h1>
-	<hr>
-	<div class="row">
-		<div class="col-md-9 personal-info">
-			<h3>Project info</h3>
-			<form class="form-horizontal" role="form">
-				<div class="form-group">
-					<label class="col-lg-3 control-label">Project name:</label>
-					<div class="col-lg-8">
-						<%= f.text_field :name, class: 'form-control'%>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-lg-3 control-label">Description:</label>
-					<div class="col-lg-8">
-						<%= f.text_field :description, class: 'form-control' %>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-lg-3 control-label">Link to project:</label>
-					<div class="col-lg-8">
-						<%= f.text_field :link, class: 'form-control' %>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-lg-3 control-label">Status:</label>
-						<%= f.check_box :status%>
-					<div class="btn-group col-lg-8" role="group" aria-label="Basic example">
-						<button type="button" class="btn btn-primary" id="btn_status_open" onclick="StatusOpen()">Open</button>
-						<button type="button" class="btn btn-primary" id="btn_status_closed" onclick="StatusClosed()">Closed</button>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-3 control-label"></label>
-					<div class="col-md-8">
-						<%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-						<a href="<%=project_path(@project)%>" class="btn btn-primary active" role="button" aria-pressed="true">Cancel</a>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-<hr>
+  <div class="container">
+    <h1>Editing Project <%=@project.name%></h1>
+    <nav>
+      <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active text-info" id="nav-Projects-tab" data-toggle="tab" href="#nav-Projects" role="tab" aria-controls="nav-Projects" aria-selected="true">Project</a>
+        <a class="nav-item nav-link text-info text" id="nav-Issues-tab" data-toggle="tab" href="#nav-Issues" role="tab" aria-controls="nav-Issues" aria-selected="false">Issues</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-Projects" role="tabpanel" aria-labelledby="nav-Projects-tab">
+        <hr>
+        <div class="row">
+          <div class="col-md-9 personal-info">
+            <h3>Project info</h3>
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Project name:</label>
+                <div class="col-lg-8">
+                  <%= f.text_field :name, class: 'form-control'%>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Description:</label>
+                <div class="col-lg-8">
+                  <%= f.text_field :description, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Link to project:</label>
+                <div class="col-lg-8">
+                  <%= f.text_field :link, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Status:</label>
+                <%= f.check_box :status%>
+                <div class="btn-group col-lg-8" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-primary" id="btn_status_open" onclick="StatusOpen()">Open</button>
+                  <button type="button" class="btn btn-primary" id="btn_status_closed" onclick="StatusClosed()">Closed</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-8">
+                  <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+                  <a href="<%=project_path(@project)%>" class="btn btn-primary active" role="button" aria-pressed="true">Cancel</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="tab-pane fade" id="nav-Issues" role="tabpanel" aria-labelledby="nav-Issues-tab">
+        <h3><%= pluralize(@project.issues.count, 'Issue') %></h3>
+        <% @project.issues.each do |issue| %>
+          <div class="card">
+            <div class="card-body">
+              <a href="<%=@project.link%>\issues\<%=issue.id%>" class="card-link"><%=issue.name%></a>
+              <div class="d-flex justify-content-between">
+                <h5 class="card-subtitle">
+                  <%if issue.status == 1%>
+                    Open
+                  <% elsif issue.status == 2 %>
+                    Working on
+                  <% else %>
+                    Closed
+                  <% end %>
+                </h5>
+              </div>
+              <div class="row align-items-center">
+                <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
+                <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
+                <h6 class="card-text font-weight-normal col-9">Pledged: $<%=issue.total_funding%></h6>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
 <% end %>
 <%if @project.status == 1%>
-	<script>document.getElementById('btn_status_open').focus();document.getElementById('btn_status_open').style.background='#0d47a1';</script>
-<%else%>
-	<script>document.getElementById('btn_status_closed').focus();document.getElementById('btn_status_closed').style.background='#0d47a1';</script>
-<%end%>
-<script>
-document.getElementById('project_status').hidden = true;
+  <script>document.getElementById('btn_status_open').focus();document.getElementById('btn_status_open').style.background='#0d47a1';</script>
+  <%else%>
+  <script>document.getElementById('btn_status_closed').focus();document.getElementById('btn_status_closed').style.background='#0d47a1';</script>
+  <%end%>
+  <script>
+    document.getElementById('project_status').hidden = true;
 
-function StatusClosed() {
+    function StatusClosed() {
     var x = document.getElementById("btn_status_open");
     var y = document.getElementById('btn_status_closed');
     document.getElementById('project_status').checked = false;
     x.style.background='#1e88e5';
     y.style.background='#0d47a1';
 
-}
-function StatusOpen() {
+    }
+    function StatusOpen() {
     var x = document.getElementById("btn_status_open");
     var y = document.getElementById('btn_status_closed');
     document.getElementById('project_status').checked = true;
     x.style.background='#0d47a1';
     y.style.background='#1e88e5';
 
-}
-</script>
+    }
+  </script>

@@ -19,6 +19,9 @@ class ProfilesController < ApplicationController
   end
 
   def github_projects
+    @project = Project.new
+    @response = RestClient.get('https://api.github.com/users/'+ current_user.username + '/repos')
+    @projects = JSON.parse(@response.body)
   end
 
   def index
