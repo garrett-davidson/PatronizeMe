@@ -6,7 +6,7 @@ pm:
   owner: garrett
   status: 0
   created_at: <%= Time.now %>
-  link: https://github.com/garrett-davidson/PatronizeMe
+  link: garrett-davidson/PatronizeMe
 
 ILikeMusic:
   name: ILikeMusic
@@ -14,7 +14,7 @@ ILikeMusic:
   owner: garrett
   status: 0
   created_at: <%= Time.now + 1 %>
-  link: https://github.com/garrett-davidson/iLikeMusic
+  link: garrett-davidson/iLikeMusic
 
 Flappy:
   name: Flappy-bird-clone
@@ -22,7 +22,7 @@ Flappy:
   owner: noah
   status: 0
   created_at: <%= Time.now + 100000 %>
-  link: https://github.com/nmaxey/Flappy-bird-clone
+  link: nmaxey/Flappy-bird-clone
 
 carbon:
   name: carbon
@@ -30,7 +30,7 @@ carbon:
   owner: noah
   status: 0
   created_at: <%= Time.now + 200000 %>
-  link: https://github.com/nmaxey/Identity
+  link: nmaxey/Identity
 
 caire:
   name: caire
@@ -38,7 +38,7 @@ caire:
   owner: noah
   status: 0
   created_at: <%= Time.now + 300000 %>
-  link: https://github.com/nmaxey/linked-list
+  link: nmaxey/linked-list
 
 Evolve:
   name: Evolve
@@ -46,7 +46,7 @@ Evolve:
   owner: riley
   status: 0
   created_at: <%= Time.now + 325000 %>
-  link: https://github.com/rileyshaw/Evolve
+  link: rileyshaw/Evolve
 
 MultiSand:
   name: MultiSand
@@ -54,4 +54,4 @@ MultiSand:
   owner: kenny
   status: 0
   created_at: <%= Time.now + 3000 %>
-  link: https://github.com/rileyshaw/MultiSand
+  link: rileyshaw/MultiSand

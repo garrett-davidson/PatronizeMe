@@ -17,4 +17,8 @@ class Project < ApplicationRecord
       issue
     end
   end
+
+  def githublink
+    'https://github.com/' + link
+  end
 end
