@@ -59,18 +59,22 @@
           <div class="card">
             <div class="card-body">
               <a href="<%=@project.link%>\issues\<%=issue.id%>" class="card-link"><%=issue.name%></a>
-              <%if issue.status == 1%>
-                <h5 class="card-subtitle mb-2">Open</h5>
-              <% elsif issue.status == 2%>
-                <h5 class="card-subtitle mb-2 ">Working on</h5>
-                <%else%>
-                <h5 class="card-subtitle mb-2 text-muted">Closed</h5>
-                <%end%>
-                <div class="row align-items-center">
-                  <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
-                  <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
-                  <h6 class="card-text font-weight-normal col-9">Pledged: $<%=issue.total_funding%></h6>
-                </div>
+              <div class="d-flex justify-content-between">
+                <h5 class="card-subtitle">
+                  <%if issue.status == 1%>
+                    Open
+                  <% elsif issue.status == 2 %>
+                    Working on
+                  <% else %>
+                    Closed
+                  <% end %>
+                </h5>
+              </div>
+              <div class="row align-items-center">
+                <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
+                <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
+                <h6 class="card-text font-weight-normal col-9">Pledged: $<%=issue.total_funding%></h6>
+              </div>
             </div>
           </div>
         <% end %>
