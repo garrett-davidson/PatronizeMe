@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
     @project.issues = fetch_github_issues
     @id = params[:id]
     @response = RestClient.get('https://api.github.com/projects/' + @id)
-    @project = JSON.parse(@response.body)
+    @project_info = JSON.parse(@response.body)
   end
 
   # GET /projects/1/edit
