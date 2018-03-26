@@ -38,7 +38,7 @@
             <%= render 'tableProjects' %>
             <%else%>
             <div class="row justify-content-center">
-              <button type="button" class="btn btn-outline-primary" id="btn_projects" onclick="location.href = 'github_projects'">Upload a Project</button>
+              <button type="button" class="btn btn-outline-primary" id="btn_projects" onclick="location.href = '<%=profile_githubprojects_path%>'">Upload a Project</button>
             </div>
             <%end%>
         </div>

@@ -20,9 +20,9 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
-    @response = RestClient.get('https://api.github.com/users/'+ current_user.username + '/repos')
-    logger.debug @response
+    @id = params[:id]
+    @response = RestClient.get('https://api.github.com/projects/' + @id)
+    @project = JSON.parse(@response.body)
   end
 
   # GET /projects/1/edit
