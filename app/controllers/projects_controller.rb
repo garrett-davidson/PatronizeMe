@@ -18,22 +18,14 @@ class ProjectsController < ApplicationController
   def show
   end
 
-  def fetch_github_issues
-    json_issues = JSON.parse(RestClient.get('https://api.github.com/repos/' + @project.link + '/issues'))
-    json_issues.map do |issue_json|
-      issue = Issue.new_from_json issue_json
-      issue.project = @project
-      issue
-    end
-  end
-
   # GET /projects/new
   def new
     @project = Project.new # TODO: Set project here
-    @project.issues = fetch_github_issues
     @id = params[:id]
     @response = RestClient.get('https://api.github.com/projects/' + @id)
     @project_info = JSON.parse(@response.body)
+
+    @project.fetch_issues
   end
 
   # GET /projects/1/edit
