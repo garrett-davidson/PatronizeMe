@@ -4,7 +4,7 @@ class CreateIssues < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :description
       t.integer :status
-      t.gihub_id :int
+      t.integer :github_id
       t.belongs_to :parent, class_name: 'Issue'
       t.belongs_to :project
 
