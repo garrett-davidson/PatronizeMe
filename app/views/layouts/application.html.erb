@@ -23,7 +23,7 @@
         <% if user_signed_in? %>
         <li class="input-group-prepend">
           <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right:10px" type="button" onclick="location.href = '<%=new_charge_path%>'">$</button>
-          <span class="input-group-text"><%= '%.2f' % current_user.balance%></span>
+          <span class="input-group-text"><%= '%.2f' % (current_user.balance/100)%></span>
         </li>
         <% end %>
       </form>
