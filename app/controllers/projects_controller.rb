@@ -21,18 +21,29 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
-    full_name = params[:name]
-    project_info = JSON.parse(RestClient.get('https://api.github.com/repos/' + full_name).body)
+    begin
+      @project = Project.new
+      full_name = params[:name]
+      project_info = JSON.parse(RestClient.get('https://api.github.com/repos/' + full_name).body)
 
-    @project.owner = current_user
-    @project.description = project_info['description']
-    @project.id = project_info['id']
-    @project.name = project_info['name']
-    @project.link = project_info['full_name']
-    @project.issues = @project.fetch_issues
-    @project.status = 1
-    @project.save!
+      @project.owner = current_user
+      @project.description = project_info['description']
+      @project.id = project_info['id']
+      @project.name = project_info['name']
+      @project.link = project_info['full_name']
+      @project.issues = @project.fetch_issues
+      @project.status = 1
+      @project.save!
+
+
+      redirect_to profile_path
+
+    rescue ActiveRecord::RecordNotUnique
+      # project already exists
+      redirect_to profile_projectexists_path
+    end
+
+
   end
 
   # GET /projects/1/edit

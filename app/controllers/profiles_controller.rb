@@ -24,6 +24,9 @@ class ProfilesController < ApplicationController
     @projects = JSON.parse(@response.body)
   end
 
+  def project_exists
+  end
+
   def index
     @users = User.all
   end
