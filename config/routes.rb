@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'profile/githubprojects', to: 'profiles#github_projects'
   get 'profile/:id', to: 'profiles#user', as: "user"
 
+  post 'projects/:id/issues/refresh', to: 'projects#refresh_issues'
+
   patch 'profile/:id', to: 'profiles#updatesettings'
 
   resources :charges
