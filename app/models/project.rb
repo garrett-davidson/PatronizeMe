@@ -11,7 +11,7 @@ class Project < ApplicationRecord
 
   def fetch_issues
     json_issues = JSON.parse(RestClient.get('https://api.github.com/repos/' + link + '/issues'))
-    self.issues = json_issues.map do |issue_json|
+    json_issues.map do |issue_json|
       issue = Issue.new_from_json issue_json
       issue.project = self
       issue

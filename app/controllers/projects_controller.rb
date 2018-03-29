@@ -2,10 +2,11 @@
 require 'rest-client'
 
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :refresh_issues]
   ORDER_BY_SUPPORT = '(SELECT SUM("issue_transactions"."amount") FROM "issue_transactions" INNER JOIN "issues" ON "issue_transactions"."issue_id"= "issues"."id" WHERE "issues"."project_id" = projects.id) DESC'
   PROJECTS_PER_PAGE = 20
 
+   skip_before_action :verify_authenticity_token
 
   # GET /projects
   # GET /projects.json
@@ -20,22 +21,49 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
-    full_name = params[:name]
-    project_info = JSON.parse(RestClient.get('https://api.github.com/repos/' + full_name).body)
+    begin
+      @project = Project.new
+      full_name = params[:name]
+      project_info = JSON.parse(RestClient.get('https://api.github.com/repos/' + full_name).body)
 
-    @project.owner = current_user
-    @project.description = project_info['description']
-    @project.id = project_info['id']
-    @project.name = project_info['name']
-    @project.link = project_info['full_name']
-    @project.fetch_issues
-    @project.status = 1
-    @project.save!
+      @project.owner = current_user
+      @project.description = project_info['description']
+      @project.id = project_info['id']
+      @project.name = project_info['name']
+      @project.link = project_info['full_name']
+      @project.issues = @project.fetch_issues
+      @project.status = 1
+      @project.save!
+
+
+      redirect_to profile_path
+
+    rescue ActiveRecord::RecordNotUnique
+      # project already exists
+      redirect_to profile_projectexists_path
+    end
+
+
   end
 
   # GET /projects/1/edit
   def edit
+  end
+
+  def refresh_issues
+    # TODO: Test
+    return head :not_found unless @project
+
+    new_issues = @project.fetch_issues
+
+    new_issues.delete_if do |issue|
+      Issue.find_by github_id: issue.github_id
+    end
+
+    @project.issues += new_issues
+    @project.save!
+
+    redirect_to edit_project_path(@project)
   end
 
   def explore

@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   get 'profile/index', to: 'profiles#index', as: "users"
   get 'profile/settings', to: 'profiles#settings'
   get 'profile/githubprojects', to: 'profiles#github_projects'
+  get 'profile/projectexists', to: 'profiles#project_exists'
   get 'profile/:id', to: 'profiles#user', as: "user"
+
+  post 'projects/:id/issues/refresh', to: 'projects#refresh_issues'
 
   patch 'profile/:id', to: 'profiles#updatesettings'
 
