@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 <div class="card">
   <h3 class="card-header"><%=@project.name%></h3>
@@ -45,7 +46,7 @@
         <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
         <h6 class="card-text font-weight-normal col-9">Pledged: $<%=issue.total_funding%></h6>
         <%if issue.status == 1%>
-        <button type="button" class="btn btn-success col-1" data-toggle="modal" data-target="#ModalCenter">
+        <button type="button" class="btn btn-success col-1" data-toggle="modal" data-issueid=<%= issue.id %> data-target="#ModalCenter">
           Support
         </button>
         <%end%>
@@ -85,7 +86,7 @@
               <span class="input-group-text">.00</span>
             </div>
           </div>
-          <button type="button" class="btn btn-primary">Support</button>
+          <button type="button" class="btn btn-primary"> Support </button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
         </div>
       </div>
@@ -120,3 +121,15 @@
     </div>
   </div>
 </div>
+<script>
+
+  $('#ModalCenter').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('issueid') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      modal.find('.modal-title').text('Issue ID: ' + recipient)
+    })
+
+  </script>

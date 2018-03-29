@@ -105,6 +105,8 @@ class ProjectsController < ApplicationController
     end
   end
 
+
+
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
@@ -117,6 +119,10 @@ class ProjectsController < ApplicationController
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
+  end
+  def addfunds
+    @current_user.balance = @current_user.balance - 1
+
   end
 
   # DELETE /projects/1
