@@ -20,7 +20,7 @@
   <% @project.issues.each do |issue| %>
   <div class="card">
     <div class="card-body">
-      <a href="<%=@project.githublink%>\issues\<%=issue.id%>" class="card-link"><%=issue.name%></a>
+      <a href="<%=@project.githublink%>\issues\<%=issue.github_id%>" class="card-link"><%=issue.name%></a>
       <%if issue.status == 1%>
       <h5 class="card-subtitle mb-2">Open</h5>
       <% elsif issue.status == 2%>

@@ -61,7 +61,7 @@
         <% @project.issues.each do |issue| %>
           <div class="card">
             <div class="card-body">
-              <a href="<%=@project.githublink%>\issues\<%=issue.id%>" class="card-link"><%=issue.name%></a>
+              <a href="<%=@project.githublink%>\issues\<%=issue.github_id%>" class="card-link"><%=issue.name%></a>
               <div class="d-flex justify-content-between">
                 <h5 class="card-subtitle">
                   <%if issue.status == 1%>
