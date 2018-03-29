@@ -6,6 +6,7 @@ finishplz:
   status: 1
   parent: null
   project: pm
+  github_id: 1
 
 inshallah:
   name: Maybe finish?
@@ -13,6 +14,7 @@ inshallah:
   status: 1
   parent: null
   project: ILikeMusic
+  github_id: 2
 
 blazorruntime:
   name: Blazor Runtime Culture
@@ -20,6 +22,7 @@ blazorruntime:
   status: 0
   parent: null
   project: Flappy
+  github_id: 3
 
 caching:
   name: Caching
@@ -27,6 +30,7 @@ caching:
   status: 1
   parent: null
   project: Flappy
+  github_id: 4
 
 samples:
   name: Samples fail under IIS
@@ -34,6 +38,7 @@ samples:
   status: 1
   parent: null
   project: Flappy
+  github_id: 5
 
 optimize:
   name: Optimize download size
@@ -41,6 +46,7 @@ optimize:
   status: 0
   parent: null
   project: Flappy
+  github_id: 6
 
 
 publishing:
@@ -49,3 +55,4 @@ publishing:
   status: 1
   parent: null
   project: Flappy
+  github_id: 7
