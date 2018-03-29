@@ -36,7 +36,7 @@
         <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding.to_s%></h6>
         <h6 class="card-text font-weight-normal col-2">My pledge: $<%=issue.total_funding.to_s%></h6>
         <%if issue.status == 1%>
-        <button type="button" class="btn btn-danger col-1" data-toggle="modal" data-target="#ModalCenterCancel">
+        <button type="button" class="btn btn-danger col-1" data-issueid=<%= issue.id %> data-projectid=<%= @project.id %> data-toggle="modal" data-target="#ModalCenterCancel">
           Cancel Support
         </button>
         <p class="text-muted col-2"><%=issue.created_at%></p>
@@ -117,7 +117,7 @@
       <div class="modal-body">
         Are you sure you want to cancel your support?
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Cancel</button>
+          <button type="button" onclick="submitcancel()" class="btn btn-primary">Cancel</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
         </div>
       </div>
@@ -141,7 +141,31 @@
 
   }
 
+  function submitcancel(){
+
+
+      form.setAttribute('action', url+'/issues/'+issueid +'/cancel')
+
+       document.body.appendChild(form);
+
+       form.submit();
+
+  }
+
   $('#ModalCenter').on('show.bs.modal', function (event) {
+
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      issueid = button.data('issueid') // Extract info from data-* attributes
+      var projectid = button.data('projectid')
+      url = button.data('url')
+      form.setAttribute('method', 'post');
+
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+   
+    })
+
+  $('#ModalCenterCancel').on('show.bs.modal', function (event) {
 
       var button = $(event.relatedTarget) // Button that triggered the modal
       issueid = button.data('issueid') // Extract info from data-* attributes

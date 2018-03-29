@@ -89,6 +89,17 @@ class ProjectsController < ApplicationController
   end
 
 
+  def cancel_support
+    issue_id = params[:issue_id]
+    it = IssueTransaction.where(user_id: current_user.id).where(issue_id: issue_id).first
+    current_user.balance = current_user.balance.to_i + it.amount
+    current_user.save!
+    it.destroy
+    redirect_back(fallback_location: root_path)
+
+  end
+
+
   def explore
     offset = params.permit(:p)[:p]&.to_i || 1
     @current_page = offset
