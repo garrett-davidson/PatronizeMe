@@ -61,7 +61,7 @@
         <% @project.issues.each do |issue| %>
           <div class="card">
             <div class="card-body">
-              <a href="<%=@project.link%>\issues\<%=issue.id%>" class="card-link"><%=issue.name%></a>
+              <a href="<%=@project.githublink%>\issues\<%=issue.github_id%>" class="card-link"><%=issue.name%></a>
               <div class="d-flex justify-content-between">
                 <h5 class="card-subtitle">
                   <%if issue.status == 1%>
@@ -78,14 +78,13 @@
                 <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
                 <h6 class="card-text font-weight-normal col-9">Pledged: $<%=issue.total_funding%></h6>
               </div>
+              <p class="text-muted"><%=issue.created_at%></p>
             </div>
           </div>
         <% end %>
-
       </div>
     </div>
   </div>
-
 <% end %>
 <%if @project.status == 1%>
   <script>document.getElementById('btn_status_open').focus();document.getElementById('btn_status_open').style.background='#0d47a1';</script>
