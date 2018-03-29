@@ -4,8 +4,9 @@
         <div class="card-body flex-justify-between">
           <div class="row">
             <a href="<%=issue_transactions.issue.project.link%>" class="col-3 card-link"><%= issue_transactions.issue.project.name %></a>
-            <div class="col-2"><%= pluralize(issue_transactions.issue.project.supporters.count, 'supporter') %></div>
-            <div class="col"><%= '$' + issue_transactions.issue.project.total_funding.to_s + ' Pledged' %></div>
+            <h4 class="col-3 card-link"><%= issue_transactions.issue %></h4>
+            <div class="col-2"><%= pluralize(issue_transactions.issue.issue_transactions.count, 'supporter') %></div>
+            <div class="col"><%= '$' + issue_transactions.issue.total_funding + ' Pledged' %></div>
             <button type="button" id="btn_table" class="btn btn-outline-primary" onclick="location.href = '<%=project_path(issue_transactions.issue.project)%>';">View</button>
           </div>
           <div class="row justify-content-end">
@@ -13,7 +14,7 @@
             <div class="card-text text-primary text-right col-auto">$<%= issue_transactions.amount %></div>
           </div>
           <div class="row justify-content-between">
-            <div class="card-text"><%= issue_transactions.issue.project.description %></div>
+            <div class="card-text"><%= issue_transactions.issue.description %></div>
           </div>
         </div>
     </div>
@@ -24,12 +25,13 @@
         <div class="card-body flex-justify-between">
           <div class="row">
             <a href="<%=issue_transactions.issue.project.link%>" class="col-3 card-link"><%= issue_transactions.issue.project.name %></a>
-            <div class="col-2"><%= pluralize(issue_transactions.issue.project.supporters.count, 'supporter') %></div>
-            <div class="col"><%= '$' + issue_transactions.issue.project.total_funding.to_s + ' Pledged' %></div>
+            <h4 class="col-3 card-link"><%= issue_transactions.issue %></h4>
+            <div class="col-2"><%= pluralize(issue_transactions.issue.issue_transactions.count, 'supporter') %></div>
+            <div class="col"><%= '$' + issue_transactions.issue.total_funding + ' Pledged' %></div>
             <button type="button" id="btn_table" class="btn btn-outline-primary" onclick="location.href = '<%=project_path(issue_transactions.issue.project)%>';">View</button>
           </div>
           <div class="row justify-content-between">
-            <div class="card-text"><%= issue_transactions.issue.project.description %></div>
+            <div class="card-text"><%= issue_transactions.issue.description %></div>
           </div>
         </div>
     </div>
