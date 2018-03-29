@@ -5,7 +5,7 @@
   <div class="card-body">
     <a href="<%=user_path(@project.owner)%>" class="card-link"><%=@project.owner.username%></a>
     <p class="card-text"><%=@project.description%></p>
-    <p class="card-text"><%= pluralize(@project.supporters.count, 'supporter') %><%= '  $' + @project.total_funding.to_i/100 + ' Pledged' %></p>
+    <p class="card-text"><%= pluralize(@project.supporters.count, 'supporter') %><%= '  $' + @project.total_funding.to_s+ ' Pledged' %></p>
     <%if @project.status == 1%>
     <p class="card-text">Status: Open</p>
     <%else%>
@@ -33,8 +33,8 @@
       <div class="row align-items-center">
         <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
         <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
-        <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding.to_i/100%></h6>
-        <h6 class="card-text font-weight-normal col-2">My pledge: $<%=issue.total_funding.to_i/100%></h6>
+        <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding.to_s%></h6>
+        <h6 class="card-text font-weight-normal col-2">My pledge: $<%=issue.total_funding.to_s%></h6>
         <%if issue.status == 1%>
         <button type="button" class="btn btn-danger col-1" data-toggle="modal" data-target="#ModalCenterCancel">
           Cancel Support
@@ -46,7 +46,7 @@
       <div class="row align-items-center">
         <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
         <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
-        <h6 class="card-text font-weight-normal col-9">Pledged: $<%=issue.total_funding.to_i/100%></h6>
+        <h6 class="card-text font-weight-normal col-9">Pledged: $<%=issue.total_funding.to_s%></h6>
         <%if issue.status == 1%>
         <button type="button" class="btn btn-success col-1" data-toggle="modal" data-issueid=<%= issue.id %> data-projectid=<%= @project.id %> data-url=<%= request.original_url %> data-target="#ModalCenter">
           Support

@@ -6,7 +6,8 @@ class Project < ApplicationRecord
   validates_presence_of :name, :status, notive: 'Must have a name'
 
   def total_funding
-    issue_transactions.sum('amount')
+    money = issue_transactions.sum('amount')
+    money/100
   end
 
   def fetch_issues

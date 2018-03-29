@@ -5,7 +5,8 @@ class Issue < ApplicationRecord
   has_many :supporters, source: :user, through: :issue_transactions
 
   def total_funding
-    issue_transactions.sum('amount')
+    money = issue_transactions.sum('amount')
+    money/100
   end
 
   def self.new_from_json(json)
