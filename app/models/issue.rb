@@ -12,7 +12,7 @@ class Issue < ApplicationRecord
     Issue.new(name: json['title'],
               description: json['body'],
               status: json['state'] == 'open' ? 1 : 0,
-              github_id: json[:id],
+              github_id: json['id'],
               created_at: json['created_at'],
               updated_at: json['updated_at'])
   end
