@@ -1,4 +1,4 @@
-<% current_user.projects.each do |project| %>
+<% @user.projects.each do |project| %>
   <div class="card ">
       <div class="card-body flex-justify-between">
         <div class="row align-items-center">
@@ -6,7 +6,7 @@
           <div class="col-3"><strong><%= project.name %></strong></div>
           <div class="col-2"><%= pluralize(project.supporters.count, 'supporter') %></div>
           <div class="col"><%= '$' + project.total_funding.to_s + ' Pledged' %></div>
-          <button type="button" class="btn btn-outline-primary"  id="btn_table" onclick="location.href = '<%=edit_project_path(project)%>';">Edit</button>
+          <button type="button" class="btn btn-outline-primary"  id="btn_table" onclick="location.href = '<%=project_path(project)%>';">view</button>
         </div>
         <div class="row justify-content-between">
           <div class="col-5"><%= project.description %></div>
