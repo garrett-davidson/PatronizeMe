@@ -63,7 +63,7 @@ class ProjectsController < ApplicationController
     @project.issues += new_issues
     @project.save!
 
-    head :ok
+    redirect_to edit_project_path(@project)
   end
 
   def explore
