@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'profile/:id', to: 'profiles#user', as: "user"
 
   post 'projects/:id/issues/refresh', to: 'projects#refresh_issues'
+  post 'projects/:id/issues/:issue_id/amount/:amount/support', to: 'projects#support_issue'
 
   patch 'profile/:id', to: 'profiles#updatesettings'
 

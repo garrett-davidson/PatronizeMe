@@ -16,6 +16,9 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+	
+
+
 		function githubcard(e){
 		var t="//lab.lepture.com/github-cards/";
 
