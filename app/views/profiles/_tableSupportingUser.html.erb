@@ -3,7 +3,7 @@
       <div class="card-body flex-justify-between">
         <div class="row">
           <a href="<%=project_path(issue_transactions.issue.project)%>" class="col-12 card-link"><%= issue_transactions.issue.project.name %></a>
-          <h4 class="col-3 card-link"><%= issue_transactions.issue.name %></h4>
+          <h4 class="col-3"><%= issue_transactions.issue.name %></h4>
           <div class="col-2"><%= pluralize(issue_transactions.issue.issue_transactions.count, 'supporter') %></div>
           <div class="col"><%= '$' + issue_transactions.issue.total_funding.to_s + ' Pledged' %></div>
           <button type="button" id="btn_table" class="btn btn-outline-primary" onclick="location.href = '<%=project_path(issue_transactions.issue.project)%>';">View</button>
