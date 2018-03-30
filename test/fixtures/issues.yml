@@ -1,58 +1,58 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-finishplz:
-  name: Git \'er done
-  description: Let\'s get this website done!
-  status: 1
-  parent: null
-  project: pm
-  github_id: 1
-
-inshallah:
-  name: Maybe finish?
-  description: Hopefully one day I\'ll get to this
-  status: 1
-  parent: null
-  project: ILikeMusic
-  github_id: 2
-
-blazorruntime:
-  name: Blazor Runtime Culture
-  description: Please consider browser runtime cultural and allow switching of culture with in the Blazor environment.
-  status: 0
-  parent: null
-  project: Flappy
-  github_id: 3
-
-caching:
-  name: Caching
-  description: Please consider how Blazor could request or inject content/embedded resources into a browser cache form display rendering ie. images, fonts, etc
-  status: 1
-  parent: null
-  project: Flappy
-  github_id: 4
-
-samples:
-  name: Samples fail under IIS
-  description: Samples fail on IIS. If hosting samples in IIS, they fail because there is no mime type for the WASM extension
-  status: 1
-  parent: null
-  project: Flappy
-  github_id: 5
-
-optimize:
-  name: Optimize download size
-  description: Optimize Mono runtime (wasm, asm.js)
-  status: 0
-  parent: null
-  project: Flappy
-  github_id: 6
-
-
-publishing:
-  name: Publishing
-  description: Linking (combining and stripping assemblies, eliminating facades)
-  status: 1
-  parent: null
-  project: Flappy
-  github_id: 7
+## Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+#
+#finishplz:
+#  name: Git \'er done
+#  description: Let\'s get this website done!
+#  status: 1
+#  parent: null
+#  project: pm
+#  github_id: 1
+#
+#inshallah:
+#  name: Maybe finish?
+#  description: Hopefully one day I\'ll get to this
+#  status: 1
+#  parent: null
+#  project: ILikeMusic
+#  github_id: 2
+#
+#blazorruntime:
+#  name: Blazor Runtime Culture
+#  description: Please consider browser runtime cultural and allow switching of culture with in the Blazor environment.
+#  status: 0
+#  parent: null
+#  project: Flappy
+#  github_id: 3
+#
+#caching:
+#  name: Caching
+#  description: Please consider how Blazor could request or inject content/embedded resources into a browser cache form display rendering ie. images, fonts, etc
+#  status: 1
+#  parent: null
+#  project: Flappy
+#  github_id: 4
+#
+#samples:
+#  name: Samples fail under IIS
+#  description: Samples fail on IIS. If hosting samples in IIS, they fail because there is no mime type for the WASM extension
+#  status: 1
+#  parent: null
+#  project: Flappy
+#  github_id: 5
+#
+#optimize:
+#  name: Optimize download size
+#  description: Optimize Mono runtime (wasm, asm.js)
+#  status: 0
+#  parent: null
+#  project: Flappy
+#  github_id: 6
+#
+#
+#publishing:
+#  name: Publishing
+#  description: Linking (combining and stripping assemblies, eliminating facades)
+#  status: 1
+#  parent: null
+#  project: Flappy
+#  github_id: 7
