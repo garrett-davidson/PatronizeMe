@@ -34,7 +34,11 @@
         <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
         <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
         <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding.to_s%></h6>
-        <h6 class="card-text font-weight-normal col-2">My pledge: $<%=issue.total_funding.to_s%></h6>
+        <%current_user.issue_transactions.each do |issue_transactions|%>
+          <%if issue_transactions.issue == issue%> 
+            <h6 class="card-text font-weight-normal col-2">My pledge: $<%=issue_transactions.amount.to_i/100%></h6>
+          <%end%>
+        <%end%>
         <%if issue.status == 1%>
         <button type="button" class="btn btn-danger col-1" data-issueid=<%= issue.id %> data-projectid=<%= @project.id %> data-toggle="modal" data-target="#ModalCenterCancel">
           Cancel Support
