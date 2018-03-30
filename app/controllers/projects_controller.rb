@@ -68,22 +68,28 @@ class ProjectsController < ApplicationController
   end
 
   def support_issue
-    newamt = params[:amount].to_i * 100
-    issue_id = params[:issue_id]
-    if newamt> current_user.balance
-        redirect_to new_charge_path
-    else
-      current_user.balance = current_user.balance - newamt
+    begin
+      newamt = params[:amount].to_i * 100
+      issue_id = params[:issue_id]
+      if newamt > 0
+        if newamt> current_user.balance 
+            redirect_to new_charge_path
+        else
+          current_user.balance = current_user.balance - newamt
+          redirect_back(fallback_location: root_path)
+          issue = Issue.find_by id: issue_id
+          newTransaction = IssueTransaction.new
+          newTransaction.amount = newamt
+          newTransaction.user_id = current_user.id
+          newTransaction.issue_id = issue_id
+          newTransaction.completed = false
+          newTransaction.cancelled = false
+          newTransaction.save!
+          current_user.save!
+        end
+      end
+    rescue
       redirect_back(fallback_location: root_path)
-      issue = Issue.find_by id: issue_id
-      newTransaction = IssueTransaction.new
-      newTransaction.amount = newamt
-      newTransaction.user_id = current_user.id
-      newTransaction.issue_id = issue_id
-      newTransaction.completed = false
-      newTransaction.cancelled = false
-      newTransaction.save!
-      current_user.save!
     end
     
   end

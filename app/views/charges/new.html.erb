@@ -47,7 +47,7 @@
 
               <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                      data-description="A month's subscription"
+                      data-description="5.00 in Credit"
                       data-amount="500"
                       data-locale="auto"></script>
               <input name="amt" type="hidden" value="500" />
@@ -74,7 +74,7 @@
 
             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                    data-description="A month's subscription"
+                    data-description="10.00 in Credit"
                     data-amount="1000"
                     data-locale="auto"></script>
             <input name="amt" type="hidden" value="1000" />
@@ -101,7 +101,7 @@
 
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                        data-description="A month's subscription"
+                        data-description="20.00 in Credit"
                         data-amount="2000"
                         data-locale="auto"></script>
                 <input name="amt" type="hidden" value="2000" />
@@ -114,7 +114,7 @@
         <div class="card-body">
           <h2 class="card-title">Add $50</h2>
           <p class="card-text"></p>
-          <p class="card-text">Support your favorite projects.  Adds $50 to your accou nt balance. </p>
+          <p class="card-text">Support your favorite projects.  Adds $50 to your account balance. </p>
          <%= form_tag charges_path do %>
               <article>
                 <% if flash[:error].present? %>
@@ -129,7 +129,7 @@
 
               <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                      data-description="A month's subscription"
+                      data-description="50.00 in Credit"
                       data-amount="5000"
                       data-locale="auto"></script>
               <input name="amt" type="hidden" value="5000" />

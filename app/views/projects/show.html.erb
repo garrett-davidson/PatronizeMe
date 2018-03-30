@@ -132,6 +132,7 @@
   function submitpost(){
       var amount = document.getElementById('amountinput').value;
      
+      amount = toInteger(amount);
 
       form.setAttribute('action', url+'/issues/'+issueid+ '/amount/' + amount  +'/support')
 
@@ -151,6 +152,11 @@
        form.submit();
 
   }
+  function toInteger(number){ 
+    return Math.round(  // round to nearest integer
+      Number(number)    // type cast your input
+    ); 
+  };
 
   $('#ModalCenter').on('show.bs.modal', function (event) {
 

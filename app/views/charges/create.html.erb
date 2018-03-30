@@ -1,1 +1,5 @@
-<h2>Thanks, you paid <strong><%= @amount.to_i / 100 %> Dollars!</strong>!</h2>
+<center>
+	<h2 style="text-align: center; padding-top: 5%; padding-bottom: 4%;font-size: 300%;">Thanks, you paid <strong><%= @amount.to_i / 100 %> Dollars!</strong>!</h2>
+	<%= button_to "Explore", explore_url, :style => "width:200px; display: block; margin: 0 auto;",  :class => "btn btn-danger salmon-color	" , method: :get%>
+
+</center>
