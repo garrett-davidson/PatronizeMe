@@ -116,7 +116,9 @@ class ProjectsController < ApplicationController
     @issue.status = status
     @issue.save!
 
-    FeedbackMailer.request_feedback(current_user, project, @issue, project.owner) if status == 3
+    if status.to_i == 3
+      FeedbackMailer.with(user: @project.owner).request_feedback(@project.owner, @project, @issue, @project.owner).deliver_now
+    end
 
     redirect_back(fallback_location: root_path)
   end
