@@ -108,7 +108,7 @@ class ProjectsController < ApplicationController
   def change_issue_status
     issue_id = params[:issue_id]
     status = params[:status]
-    issue = Issue.find_by github_id: issue_id
+    issue = Issue.find issue_id
 
     unless issue
       render text: 'Not found', status: 404
