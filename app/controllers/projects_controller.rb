@@ -105,7 +105,7 @@ class ProjectsController < ApplicationController
 
   end
 
-  def change_issue_state
+  def change_issue_status
     issue_id = params[:issue_id]
     status = params[:status]
     issue = Issue.find_by github_id: issue_id
