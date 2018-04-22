@@ -1,0 +1,26 @@
+<div class="card">
+  <h2 class="card-header">
+    Issue <%=@issue.github_id%>
+  </h2>
+  <div class="card-body">
+    <h3 class="card-text"><%=@issue.name%></h3>
+    <div class="d-flex justify-content-between">
+      <h6 class="card-subtitle">
+        <%if @issue.status == 1%>
+        Open
+        <% elsif @issue.status == 2 %>
+        Active
+        <% elsif @issue.status == 3 %>
+        Under Review
+        <%else%>
+        Closed
+        <% end %>
+      </h6>
+    </div>
+    <div class="row align-items-center">
+    <h4 class="card-text font-weight-normal col-3">Approval rating: 55%</h4>
+    </div>
+    <p class="text-muted"><%=@issue.created_at%></p>
+  </div>
+</div>
+Loop here to get every answer with a comment.

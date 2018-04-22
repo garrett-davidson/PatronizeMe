@@ -26,6 +26,8 @@
       <h5 class="card-subtitle mb-2">Open</h5>
       <% elsif issue.status == 2%>
       <h5 class="card-subtitle mb-2 ">Active</h5>
+      <% elsif issue.status == 3%>
+      <h5 class="card-subtitle mb-2 ">Under Review</h5>
       <%else%>
       <h5 class="card-subtitle mb-2 text-muted">Closed</h5>
       <%end%>

@@ -51,6 +51,13 @@ class ProjectsController < ApplicationController
   def edit
   end
 
+  def review_issue
+    redirect_to new_user_session_path unless user_signed_in?
+    @project = Project.find(params[:id])
+    @issue = Issue.find(params[:issue_id])
+
+  end
+
   def refresh_issues
     # TODO: Test
     return head :not_found unless @project

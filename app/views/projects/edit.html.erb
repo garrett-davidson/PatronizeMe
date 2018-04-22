@@ -79,17 +79,16 @@
                 <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
                 <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
                 <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding%></h6>
-                  <%if issue.status == 0%>
-                    <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(1, <%=issue.id%>)">Open</button>
-                    <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(2, <%=issue.id%>)">Active</button>
-                  <%end%>
                   <%if issue.status == 1 %>
-                    <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(0, <%=issue.id%>)">Close</button>
-                    <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(2, <%=issue.id%>)">Active</button>
+                    <button type="button" class="btn btn-primary offset-1 col-1" id="<%=issue.id%>" onclick="ChangeStatus(2, <%=issue.id%>)">Active</button>
                   <% end %>
                   <%if issue.status == 2 %>
-                    <button type="button" class="btn btn-primary col-auto" id="<%=issue.id%>" data-toggle="modal" data-target="#exampleModal" data-id="<%=issue.id%>">Complete</button>
                     <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(1, <%=issue.id%>)">Open</button>
+                    <button type="button" class="btn btn-primary col-auto" id="<%=issue.id%>" data-toggle="modal" data-target="#exampleModal" data-id="<%=issue.id%>">Complete</button>
+                  <%end%>
+                  <%if issue.status == 3 || issue.status == 0 %>
+                    <h6 class="card-text font-weight-normal col-3">Approval rating: 55%</h6>
+                    <button type="button" class="btn btn-primary offset-9 col-2" onclick="location.href = '/projects/<%=@project.id%>/issue/<%=issue.id%>'">View Results</button>
                   <%end%>
               </div>
               <p class="text-muted"><%=issue.created_at%></p>
@@ -159,7 +158,7 @@
   id = button.data('id') // Extract info from data-* attributes
   console.log(id)
 })
-  function ChangeStatusCompelte(){
+  function ChangeStatusComplete(){
     console.log(id)
     $.post("/projects/" + <%=@project.id%> + "/issues/" + id + "/status/3")
 
