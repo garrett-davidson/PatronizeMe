@@ -2,8 +2,8 @@
 require 'rest-client'
 
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :refresh_issues, :support_issue]
-  before_action :set_issue, only: [:support_issue]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :refresh_issues, :support_issue, :change_issue_status]
+  before_action :set_issue, only: [:support_issue, :change_issue_status]
   ORDER_BY_SUPPORT = '(SELECT SUM("issue_transactions"."amount") FROM "issue_transactions" INNER JOIN "issues" ON "issue_transactions"."issue_id"= "issues"."id" WHERE "issues"."project_id" = projects.id) DESC'
   PROJECTS_PER_PAGE = 20
 
@@ -72,7 +72,7 @@ class ProjectsController < ApplicationController
       newamt = params[:amount].to_i * 100
       issue_id = params[:issue_id]
       if newamt > 0
-        if newamt> current_user.balance 
+        if newamt> current_user.balance
             redirect_to new_charge_path
         else
           current_user.balance = current_user.balance - newamt
@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
     rescue
       redirect_back(fallback_location: root_path)
     end
-    
+
   end
 
 
@@ -106,17 +106,16 @@ class ProjectsController < ApplicationController
   end
 
   def change_issue_status
-    issue_id = params[:issue_id]
     status = params[:status]
-    issue = Issue.find issue_id
 
-    unless issue
+    unless @issue
       render text: 'Not found', status: 404
       return
     end
 
-    issue.status = status
-    issue.save!
+    @issue.status = status
+    @issue.save!
+
     redirect_back(fallback_location: root_path)
   end
 
