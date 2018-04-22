@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <meta content = 'text/html; charset = UTF-8' http-equiv = 'Content-Type' />
+  </head>
+
+  <body>
+    <h1>Hello <%= @user.name %>,</h1>
+
+    <p>
+      <%= @developer.name %> has marked <i><%= @issue.name %></i> as ready for review. As a supporter of this issue, please verify that this issue has been successfully completed and submit your feedback <a href="<%= @issue.feedback_url %>">here</a>.
+    </p>
+
+    <p>Thank you for your support!</p>
+  </body>
+</html>
