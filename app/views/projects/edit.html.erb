@@ -76,7 +76,10 @@
               <div class="row align-items-center">
                 <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
                 <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
-                <h6 class="card-text font-weight-normal col-9">Pledged: $<%=issue.total_funding%></h6>
+                <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding%></h6>
+                <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(0, <%=issue.github_id%>)">Close</button>
+                <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(1, <%=issue.github_id%>)">Open</button>
+                <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(2, <%=issue.github_id%>)">Active</button>
               </div>
               <p class="text-muted"><%=issue.created_at%></p>
             </div>
@@ -111,3 +114,11 @@
 
     }
   </script>
+<script>
+  function ChangeStatus(status, id){
+    console.log(status,id)
+    $.post("/projects/" + <%=@project.id%> + "/issues/" + id + "/status/" + status)
+
+  }
+</script>
+
