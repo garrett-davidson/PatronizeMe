@@ -67,8 +67,10 @@
                   <%if issue.status == 1%>
                     Open
                   <% elsif issue.status == 2 %>
-                    Working on
-                  <% else %>
+                    Active
+                  <% elsif issue.status == 3 %>
+                    Under Review
+                  <%else%>
                     Closed
                   <% end %>
                 </h5>
@@ -77,9 +79,18 @@
                 <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
                 <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
                 <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding%></h6>
-                <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(0, <%=issue.github_id%>)">Close</button>
-                <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(1, <%=issue.github_id%>)">Open</button>
-                <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(2, <%=issue.github_id%>)">Active</button>
+                  <%if issue.status == 0%>
+                    <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(1, <%=issue.id%>)">Open</button>
+                    <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(2, <%=issue.id%>)">Active</button>
+                  <%end%>
+                  <%if issue.status == 1 %>
+                    <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(0, <%=issue.id%>)">Close</button>
+                    <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(2, <%=issue.id%>)">Active</button>
+                  <% end %>
+                  <%if issue.status == 2 %>
+                    <button type="button" class="btn btn-primary col-auto" id="<%=issue.id%>" data-toggle="modal" data-target="#exampleModal" data-id="<%=issue.id%>">Complete</button>
+                    <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(1, <%=issue.id%>)">Open</button>
+                  <%end%>
               </div>
               <p class="text-muted"><%=issue.created_at%></p>
             </div>
@@ -121,4 +132,36 @@
 
   }
 </script>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Conformation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Once you have marked an issue as completed all supporters will be informed and get to review the changes. A approval rating of 50% will be needed to receive the funds.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="submit" onclick="ChangeStatusComplete()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var id;
+  $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  id = button.data('id') // Extract info from data-* attributes
+  console.log(id)
+})
+  function ChangeStatusCompelte(){
+    console.log(id)
+    $.post("/projects/" + <%=@project.id%> + "/issues/" + id + "/status/3")
 
+  }
+</script>
