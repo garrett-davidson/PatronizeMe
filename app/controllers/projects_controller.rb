@@ -105,6 +105,20 @@ class ProjectsController < ApplicationController
 
   end
 
+  def change_issue_state
+    issue_id = params[:issue_id]
+    status = params[:status]
+    issue = Issue.find_by github_id: issue_id
+
+    unless issue
+      render text: 'Not found', status: 404
+      return
+    end
+
+    issue.status = status
+    issue.save!
+    redirect_back(fallback_location: root_path)
+  end
 
   def explore
     offset = params.permit(:p)[:p]&.to_i || 1
