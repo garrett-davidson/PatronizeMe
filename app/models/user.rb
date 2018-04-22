@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :projects, inverse_of: :owner, foreign_key: 'owner_id'
   has_many :issue_transactions, inverse_of: :user
   has_many :feedbacks, inverse_of: :user
+  has_many :badges, inverse_of: :user
   has_one :user_setting
 
   def self.from_omniauth(auth)
