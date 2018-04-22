@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'projects/:id/issues/refresh', to: 'projects#refresh_issues'
   post 'projects/:id/issues/:issue_id/amount/:amount/support', to: 'projects#support_issue'
   post 'projects/:id/issues/:issue_id/cancel', to: 'projects#cancel_support'
+  post 'projects/:id/issues/:issue_id/status/:status', to: 'projects#change_issue_status'
 
   patch 'profile/:id', to: 'profiles#updatesettings'
 
