@@ -3,6 +3,7 @@ class Issue < ApplicationRecord
   has_many :children, class_name: :issue
   has_many :issue_transactions, inverse_of: :issue
   has_many :supporters, source: :user, through: :issue_transactions
+  has_many :feedbacks, inverse_of: :issue
 
   def total_funding
     money = issue_transactions.sum('amount')
