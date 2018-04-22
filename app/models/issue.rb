@@ -17,4 +17,8 @@ class Issue < ApplicationRecord
               created_at: json['created_at'],
               updated_at: json['updated_at'])
   end
+
+  def feedback_url
+    'Implement me'
+  end
 end
