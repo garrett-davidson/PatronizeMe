@@ -22,4 +22,15 @@ class Issue < ApplicationRecord
   def feedback_url
     'Implement me'
   end
+
+  def percentage
+    if self.feedbacks.any?
+      total = 0
+      self.feedbacks.each do |feedback|
+        total+= feedback.weight if feedback.accepted
+      end
+      return total/self.feedbacks.count
+    end
+    0
+  end
 end

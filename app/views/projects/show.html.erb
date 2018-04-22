@@ -35,28 +35,34 @@
       <div class="row align-items-center">
         <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
         <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
-        <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding.to_s%></h6>
+        <h6 class="card-text font-weight-normal col-5">Pledged: $<%=issue.total_funding.to_s%></h6>
         <%current_user.issue_transactions.each do |issue_transactions|%>
           <%if issue_transactions.issue == issue%> 
             <h6 class="card-text font-weight-normal col-2">My pledge: $<%=issue_transactions.amount.to_i/100%></h6>
           <%end%>
         <%end%>
         <%if issue.status == 1%>
-        <button type="button" class="btn btn-danger col-1" data-issueid=<%= issue.id %> data-projectid=<%= @project.id %> data-toggle="modal" data-target="#ModalCenterCancel">
+        <button type="button" class="btn btn-danger offset-2 col-1" data-issueid=<%= issue.id %> data-projectid=<%= @project.id %> data-toggle="modal" data-target="#ModalCenterCancel">
           Cancel Support
         </button>
+        <%elsif issue.status == 3 || issue.status == 0%>
+          <h6 class="card-text font-weight-normal col-2">Acceptance rating: <%=issue.percentage%>%</h6>
+          <button type="button" class="btn btn-primary col-1" onclick="location.href = '/projects/<%=@project.id%>/issue/<%=issue.id%>'">View Results</button>
+        <%end%>        
         <p class="text-muted col-2"><%=issue.created_at%></p>
-        <%end%>
       </div>
       <%else%>
       <div class="row align-items-center">
         <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
         <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
-        <h6 class="card-text font-weight-normal col-9">Pledged: $<%=issue.total_funding.to_s%></h6>
+        <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding.to_s%></h6>
         <%if issue.status == 1%>
-        <button type="button" class="btn btn-success col-1" data-toggle="modal" data-issueid=<%= issue.id %> data-projectid=<%= @project.id %> data-url=<%= request.original_url %> data-target="#ModalCenter">
+        <button type="button" class="btn btn-success offset-2 col-1" data-toggle="modal" data-issueid=<%= issue.id %> data-projectid=<%= @project.id %> data-url=<%= request.original_url %> data-target="#ModalCenter">
           Support
         </button>
+        <%elsif issue.status == 3 || issue.status == 0%>
+          <h6 class="card-text font-weight-normal col-2">Acceptance rating: <%=issue.percentage%>%</h6>
+          <button type="button" class="btn btn-primary col-1" onclick="location.href = '/projects/<%=@project.id%>/issue/<%=issue.id%>'">View Results</button>
         <%end%>
         <p class="text-muted col-2"><%=issue.created_at%></p>
       </div>

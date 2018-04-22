@@ -18,9 +18,28 @@
       </h6>
     </div>
     <div class="row align-items-center">
-    <h4 class="card-text font-weight-normal col-3">Approval rating: 55%</h4>
+    <h4 class="card-text font-weight-normal col-3">Acceptance rating: <%=@issue.percentage%>%</h4>
     </div>
     <p class="text-muted"><%=@issue.created_at%></p>
   </div>
 </div>
-Loop here to get every answer with a comment.
+<%if @issue.feedbacks.any? %>
+<div class="card">
+  <h3 class="card-header">Comments</h3>
+  <% @issue.feedbacks.each do |feedback| %>
+    <div class="card">
+    <div class="card-body">
+      <%if feedback.accepted%>
+        <h3 class="card-subtitle">Comepletion: Yes.</h3>
+      <%else%>
+        <h3 class="card-subtitle">Comepletion: No.</h3>
+      <%end%>
+      <div class="card-text">Comment:<%feedback.Comment%></div>
+    </div>
+  </div>
+  <%end%>
+</div>
+<%else%>
+  <h3>No responses at this time.</h3>
+<%end%>
+
