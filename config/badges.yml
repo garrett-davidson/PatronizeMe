@@ -1,0 +1,27 @@
+HighRoller:
+  name: High Roller
+  description: I have spent a lot of money on this site.
+
+Busy:
+  name: Busy
+  description: I have put a lot of projects on here.
+
+Acceptable:
+  name: Acceptable
+  description: People generally like my work.
+
+Completionist:
+  name: Completionist
+  description: I get stuff done.
+
+Helpful:
+  name: Helpful
+  description: I have supported a lot of issues.
+
+Likable:
+  name: Likable
+  description: A lot of people support my work.
+
+OldTimer:
+  name: Old Timer
+  description: I have been here a while.
