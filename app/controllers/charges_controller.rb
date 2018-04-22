@@ -37,11 +37,11 @@ class ChargesController < ApplicationController
       customer_id = customer['id']
 
       logger.debug customer_id
-     
+
       current_user.balance += @amount.to_i
       current_user.save!
       # Create a payout to the specified recipient
-      
+
 
     else
       customer = Stripe::Customer.create(
@@ -61,10 +61,9 @@ class ChargesController < ApplicationController
 
     end
 
-    
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
-  end 
+  end
 
 end
