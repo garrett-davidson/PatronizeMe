@@ -219,7 +219,7 @@ class ProjectsController < ApplicationController
   end
 
   def feedback_submit
-    
+
   end
 
 
