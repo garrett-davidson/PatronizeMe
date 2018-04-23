@@ -122,8 +122,9 @@ class ProjectsController < ApplicationController
 
     @issue.status = status
     @issue.save!
-
+    logger.debug 'about to send email'
     if status.to_i == 3
+      logger.debug current_user
       FeedbackMailer.request_feedback(current_user, @project, @issue, @project.owner).deliver_now
     end
 

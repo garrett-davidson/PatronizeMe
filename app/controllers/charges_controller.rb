@@ -24,23 +24,44 @@ class ChargesController < ApplicationController
     # Amount in cents
     @params = params
     @amount = params[:amt]
+    logger.debug @amount
 
-   
 
-    customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
-      :source  => params[:stripeToken]
-    )
+    if @amount.to_i == 10000 then
+      customer = Stripe::Customer.create(
+        :email => params[:stripeEmail],
+        :source  => params[:stripeToken]
+      )
+      logger.debug customer
+      card_id = customer['sources']['data'][0]['id']
+      customer_id = customer['id']
 
-    charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
-    )
+      logger.debug customer_id
+     
+      current_user.balance += @amount.to_i
+      current_user.save!
+      # Create a payout to the specified recipient
+      
 
-  current_user.balance += @amount.to_i
-  current_user.save!
+    else
+      customer = Stripe::Customer.create(
+        :email => params[:stripeEmail],
+        :source  => params[:stripeToken]
+      )
+
+      charge = Stripe::Charge.create(
+        :customer    => customer.id,
+        :amount      => @amount,
+        :description => 'Rails Stripe customer',
+        :currency    => 'usd'
+      )
+
+      current_user.balance += @amount.to_i
+      current_user.save!
+
+    end
+
+    
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path

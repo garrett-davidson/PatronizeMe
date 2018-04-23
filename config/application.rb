@@ -19,9 +19,10 @@ module PatronizeMe
     config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 587,
-      user_name:            '<email>',
-      password:             '<password>',
-      authentication:       'plain',
+      domain:               'gmail.com',
+      user_name:            'getpatronizeme@gmail.com',
+      password:             'g5J#1wshZ!',
+      authentication:       :login,
       enable_starttls_auto: true
     }
 
