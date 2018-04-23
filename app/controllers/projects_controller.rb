@@ -214,6 +214,15 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def feedback_form
+    render feedback_form
+  end
+
+  def feedback_submit
+    
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
