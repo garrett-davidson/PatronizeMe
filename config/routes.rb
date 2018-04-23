@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post 'projects/:id/issues/:issue_id/amount/:amount/support', to: 'projects#support_issue'
   post 'projects/:id/issues/:issue_id/cancel', to: 'projects#cancel_support'
   post 'projects/:id/issues/:issue_id/status/:status', to: 'projects#change_issue_status'
-  post 'projects/:id/issues/:issue_id/feedback/:user_id', to: 'projects#feedback_form'
+  get 'projects/:id/issues/:issue_id/feedback/:user_id', to: 'projects#feedback_form'
   post 'projects/:id/issues/:issue_id/feedback/:user_id/submit', to: 'projects#feedback_submit'
 
   patch 'profile/:id', to: 'profiles#updatesettings'
