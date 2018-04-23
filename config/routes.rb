@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   post 'projects/:id/issues/:issue_id/status/:status', to: 'projects#change_issue_status'
 
   patch 'profile/:id', to: 'profiles#updatesettings'
-
+  
+  get 'charges/withdraw' ,to: 'charges#withdraw'
   resources :charges
+
 
   resources :projects
   get 'home/index'

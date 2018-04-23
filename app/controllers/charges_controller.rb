@@ -4,10 +4,28 @@ class ChargesController < ApplicationController
   def new
   end
 
+  def withdraw
+
+    /testSource = Stripe::Source.create(
+      :type => "ach_debit",
+      :currency => 'usd',
+      :owner => {
+        :email => 'jenny.rosen@example.com',
+      },
+    )
+    customer = Stripe::Customer.create(
+      :email => 'jenny.rosen@example.com',
+      :source  => testSource
+    )/
+  end
+
+
   def create
     # Amount in cents
     @params = params
     @amount = params[:amt]
+
+   
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
