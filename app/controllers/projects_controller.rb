@@ -122,10 +122,13 @@ class ProjectsController < ApplicationController
 
     @issue.status = status
     @issue.save!
-    logger.debug 'about to send email'
+
     if status.to_i == 3
-      logger.debug current_user
-      FeedbackMailer.request_feedback(current_user, @project, @issue, @project.owner).deliver_now
+      for transaction in @issue.issue_transactions 
+          logger.debug transaction.user.email
+           FeedbackMailer.request_feedback(transaction.user, @project, @issue, @project.owner).deliver_now
+      end
+
     end
 
     redirect_back(fallback_location: root_path)
