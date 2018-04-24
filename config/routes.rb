@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get 'profile/githubprojects', to: 'profiles#github_projects'
   get 'profile/projectexists', to: 'profiles#project_exists'
   get 'profile/:id', to: 'profiles#user', as: "user"
-  get 'projects/:id/issue/:issue_id', to:'projects#review_issue'
-
+  
+  get 'projects/:id/issues/:issue_id', to:'projects#review_issue'
   post 'projects/:id/issues/refresh', to: 'projects#refresh_issues'
   post 'projects/:id/issues/:issue_id/amount/:amount/support', to: 'projects#support_issue'
   post 'projects/:id/issues/:issue_id/cancel', to: 'projects#cancel_support'
