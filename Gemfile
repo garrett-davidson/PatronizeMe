@@ -77,3 +77,7 @@ gem 'paperclip'
 # restclient setup
 # from https://www.learnhowtoprogram.com/rails/building-an-e-commerce-site-with-ajax-and-apis/making-api-calls-in-rails
 gem 'rest-client'
+
+#simple form
+# from
+gem 'simple_form'

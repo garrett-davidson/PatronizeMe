@@ -8,6 +8,7 @@ class User < ApplicationRecord
     :omniauthable, omniauth_providers: [:github]
   has_many :projects, inverse_of: :owner, foreign_key: 'owner_id'
   has_many :issue_transactions, inverse_of: :user
+  has_many :feedbacks, inverse_of: :user
   has_one :user_setting
 
   def self.from_omniauth(auth)

@@ -216,11 +216,23 @@ class ProjectsController < ApplicationController
 
   def feedback_form
     @issue = Issue.find(params[:issue_id])
-     @project = Project.find(params[:id])
+    @project = Project.find(params[:id])
   end
 
   def feedback_submit
+    @issue = Issue.find(params[:issue_id])
+    @project = Project.find(params[:id])
+    @feedback = Feedback.new
+    if params[:accepted] == "yes"
+      @feedback.accepted = TRUE
+    else
+      @feedback.accepted = FALSE
+    end
+    @feedback.comment = params[:comment]
+    @feedback.issue_id = params[:issue_id]
+    @feedback.user_id = current_user.id
 
+    @feedback.save!
   end
 
 
