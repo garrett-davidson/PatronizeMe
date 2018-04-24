@@ -65,6 +65,7 @@ gem 'bootstrap'
 gem 'bootstrap-social-rails'
 
 gem 'stripe'
+gem 'whenever', :require => false
 
 # jquery
 gem 'jquery-rails'
