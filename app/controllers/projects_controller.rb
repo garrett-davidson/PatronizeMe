@@ -223,7 +223,7 @@ class ProjectsController < ApplicationController
     @issue = Issue.find(params[:issue_id])
     @project = Project.find(params[:id])
     @feedback = Feedback.new
-    if params[:accepted] == "Yes"
+    if params[:accepted] == "yes"
       @feedback.accepted = TRUE
     else
       @feedback.accepted = FALSE
