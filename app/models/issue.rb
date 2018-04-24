@@ -20,7 +20,7 @@ class Issue < ApplicationRecord
   end
 
   def feedback_url
-    'Implement me'
+    return "http://getpatronizeme.com:3000/projects/" + self.project.id.to_s + "/issues/" + self.id.to_s + "/feedback"
   end
 
   def percentage

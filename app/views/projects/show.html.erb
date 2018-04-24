@@ -50,7 +50,7 @@
             <h6 class="card-text font-weight-normal col-2">Acceptance rating: <%=issue.percentage%>%</h6>
             <button type="button" class="btn btn-primary col-1" onclick="location.href = '/projects/<%=@project.id%>/issue/<%=issue.id%>'">View Results</button>
           <%else%>
-            <button type="button" class="btn btn-primary col-1" onclick="location.href = '/projects/<%=@project.id%>/issues/<%=issue.id%>/feedback/<%=current_user.id%>'">Submit Feedback</button>
+            <button type="button" class="btn btn-primary col-1" onclick="location.href = '/projects/<%=@project.id%>/issues/<%=issue.id%>/feedback'">Submit Feedback</button>
           <%end%>
         <%end%>        
         <p class="text-muted col-2"><%=issue.created_at%></p>

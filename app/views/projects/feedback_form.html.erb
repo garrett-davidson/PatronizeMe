@@ -1,4 +1,4 @@
-<%= form_tag("/projects/#{@project.id}/issues/#{@issue.id}/feedback/#{current_user.id}/submit", method: "post") do %>
+<%= form_tag("/projects/#{@project.id}/issues/#{@issue.id}/feedback/submit", method: "post") do %>
   <%= label_tag(:complete, "Was the issue completed?") %>
   <%= radio_button_tag(:accepted, "yes") %>
   <%= label_tag(:yes, "Yes") %>
