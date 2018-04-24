@@ -1,11 +1,31 @@
 <%= form_tag("/projects/#{@project.id}/issues/#{@issue.id}/feedback/submit", method: "post") do %>
-  <%= label_tag(:complete, "Was the issue completed?") %>
-  <%= radio_button_tag(:accepted, "yes") %>
-  <%= label_tag(:yes, "Yes") %>
-  <%= radio_button_tag(:accepted, "no") %>
-  <%= label_tag(:no, "No") %>
-  <%= label_tag(:add_comment, "Add a comment:") %>
-  <%= text_field_tag(:comment) %>
-  <%= submit_tag("Submit") %>
+    <div class="page-header">
+        <h2 style="text-align: center;font-size: 400%;" >Feedback</h2>
+    </div>
+
+
+
+     <div style="text-align: center;font-size: 200%; margin-top: 50px">
+        <%= label_tag(:complete, "Was the issue \"#{@issue.name}\" completed?") %>
+    </div >
+
+    <div style="text-align: center;font-size: 150%;">
+        <%= radio_button_tag(:accepted, "yes") %>
+        <%= label_tag(:yes, "Yes") %>
+        <%= radio_button_tag(:accepted, "no") %>
+        <%= label_tag(:no, "No") %>
+    </div >
+
+    <div style="text-align: center;font-size: 200%; margin-top: 50px">
+        <%= label_tag(:add_comment, "Add a comment") %>
+    </div>
+
+    <div style="text-align: center;">
+        <%= text_area_tag(:message, "", size: "75x6") %>
+    </div>
+
+     <div style="text-align: center; margin-top: 30px" >
+        <%= submit_tag("Submit", class: "btn btn-danger salmon-color")%>
+    </div >
 <% end %>
 
