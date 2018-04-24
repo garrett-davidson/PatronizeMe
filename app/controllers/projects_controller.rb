@@ -231,6 +231,7 @@ class ProjectsController < ApplicationController
     @feedback.comment = params[:comment]
     @feedback.issue_id = params[:issue_id]
     @feedback.user_id = current_user.id
+    @feedback.weight = 1
 
     @feedback.save!
   end
