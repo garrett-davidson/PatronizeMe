@@ -215,7 +215,8 @@ class ProjectsController < ApplicationController
   end
 
   def feedback_form
-    render feedback_form
+    @issue = Issue.find(params[:issue_id])
+     @project = Project.find(params[:id])
   end
 
   def feedback_submit

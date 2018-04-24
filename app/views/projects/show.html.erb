@@ -48,9 +48,9 @@
         <%elsif issue.status == 3 || issue.status == 0%>
           <%if issue.feedbacks.include? current_user %>
             <h6 class="card-text font-weight-normal col-2">Acceptance rating: <%=issue.percentage%>%</h6>
-            <button type="button" class="btn btn-primary col-1" onclick="location.href = '/projects/<%=@project.id%>/issue/<%=issue.id%>'">View Results</button>
+            <button type="button" class="btn btn-primary col-1" onclick="location.href = '/projects/<%=@project.id%>/issues/<%=issue.id%>'">View Results</button>
           <%else%>
-            <button type="button" class="btn btn-primary col-1" onclick="location.href = '/projects/<%=@project.id%>/issue/<%=issue.id%>/feedback/<%=current_user.id%>'">Submit Feedback</button>
+            <button type="button" class="btn btn-primary col-1" onclick="location.href = '/projects/<%=@project.id%>/issues/<%=issue.id%>/feedback/<%=current_user.id%>'">Submit Feedback</button>
           <%end%>
         <%end%>        
         <p class="text-muted col-2"><%=issue.created_at%></p>
@@ -66,7 +66,7 @@
         </button>
         <%elsif issue.status == 3 || issue.status == 0%>
           <h6 class="card-text font-weight-normal col-2">Acceptance rating: <%=issue.percentage%>%</h6>
-          <button type="button" class="btn btn-primary col-1" onclick="location.href = '/projects/<%=@project.id%>/issue/<%=issue.id%>'">View Results</button>
+          <button type="button" class="btn btn-primary col-1" onclick="location.href = '/projects/<%=@project.id%>/issues/<%=issue.id%>'">View Results</button>
         <%end%>
         <p class="text-muted col-2"><%=issue.created_at%></p>
       </div>
