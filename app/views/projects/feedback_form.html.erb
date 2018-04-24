@@ -1,14 +1,11 @@
-
-<%= form_tag("/projects/#{@project.id}/issues/#{@issue.id}/feedback/#{current_user.id}/submit", method: "post", class: "form-group") do %>
-  <div class="form-group">
-    <%= radio_button_tag(:completed, "Yes") %>
-    <%= radio_button_tag(:completed, "No") %>
-
-    <%= label_tag(:q, "Search for:") %>
-    <%= text_field_tag(:q) %>
-
-
-    <%= submit_tag("Submit") %>
-  </div>
-  
+<%= form_tag("/projects/#{@project.id}/issues/#{@issue.id}/feedback/#{current_user.id}/submit", method: "post") do %>
+  <%= label_tag(:complete, "Was the issue completed?") %>
+  <%= radio_button_tag(:accepted, "yes") %>
+  <%= label_tag(:yes, "Yes") %>
+  <%= radio_button_tag(:accepted, "no") %>
+  <%= label_tag(:no, "No") %>
+  <%= label_tag(:add_comment, "Add a comment:") %>
+  <%= text_field_tag(:comment) %>
+  <%= submit_tag("Submit") %>
 <% end %>
+
