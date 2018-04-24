@@ -87,7 +87,7 @@
                     <button type="button" class="btn btn-primary col-auto" id="<%=issue.id%>" data-toggle="modal" data-target="#exampleModal" data-id="<%=issue.id%>">Complete</button>
                   <%end%>
                   <%if issue.status == 3 || issue.status == 0 %>
-                    <h6 class="card-text font-weight-normal col-3">Acceptance rating: <%=issue.percentage%>%</h6>
+                    <h6 class="card-text font-weight-normal col-3">Acceptance rating: <%=issue.percentage * 100%>%</h6>
                     <button type="button" class="btn btn-primary offset-9 col-2" onclick="location.href = '/projects/<%=@project.id%>/issue/<%=issue.id%>'">View Results</button>
                   <%end%>
               </div>

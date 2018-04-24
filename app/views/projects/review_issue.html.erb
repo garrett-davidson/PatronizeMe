@@ -18,7 +18,7 @@
       </h6>
     </div>
     <div class="row align-items-center">
-    <h4 class="card-text font-weight-normal col-3">Acceptance rating: <%=@issue.percentage%>%</h4>
+    <h4 class="card-text font-weight-normal col-3">Acceptance rating: <%=@issue.percentage * 100%>%</h4>
     </div>
     <p class="text-muted"><%=@issue.created_at%></p>
   </div>
