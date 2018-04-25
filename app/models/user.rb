@@ -27,6 +27,19 @@ class User < ApplicationRecord
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100#' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :avatar, content_type: %r{/\Aimage\/.*\Z}
 
+  def update_badge_progress(badge_name, progress)
+    user_level = 0
+    $badges[badge_name]['levels'].each do |level|
+      if progress > level.to_i
+        user_level += 1
+      else
+        break
+      end
+    end
+
+    set_badge_level(badge_name, user_level)
+  end
+
   def set_badge_level(badge_name, level)
     badge = Badge.where(user_id: self.id, badge_id: $badges[badge_name]['id']).first_or_create
     badge.level = level

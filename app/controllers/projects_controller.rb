@@ -37,17 +37,8 @@ class ProjectsController < ApplicationController
       @project.save!
 
       project_count = current_user.projects.count
-      user_level = 0
-      $badges['Busy']['levels'].each do |level|
-        if project_count > level.to_i
-          user_level += 1
-        else
-          break
-        end
-      end
 
-      current_user.set_badge_level('Busy', user_level)
-
+      current_user.update_badge_progress('Busy', project_count)
 
       redirect_to profile_path
 
