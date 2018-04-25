@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
-    :omniauthable, omniauth_providers: [:github]
+    :omniauthable, omniauth_providers: [:github, :stripe_connect]
   has_many :projects, inverse_of: :owner, foreign_key: 'owner_id'
   has_many :issue_transactions, inverse_of: :user
   has_many :feedbacks, inverse_of: :user

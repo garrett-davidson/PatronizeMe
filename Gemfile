@@ -81,3 +81,7 @@ gem 'rest-client'
 #simple form
 # from
 gem 'simple_form'
+
+# stripe oauth
+# from https://www.munocreative.com/blog/stripe-connect-rails/
+gem 'omniauth-stripe-connect'

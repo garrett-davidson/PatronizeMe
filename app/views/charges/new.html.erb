@@ -155,25 +155,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <%= form_tag charges_path do %>
-              <article>
-                <% if flash[:error].present? %>
-                  <div id="error_explanation">
-                    <p><%= flash[:error] %></p>
-                  </div>
-                <% end %>
-                <label class="amount">
-                  <span>Amount: $100.00</span>
-                </label>
-              </article>
-
-              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                      data-description="100.00 in Credit"
-                      data-amount="10000"
-                      data-locale="auto"></script>
-              <input name="amt" type="hidden" value="10000" />
-            <% end %>
+            <%= link_to image_tag('/images/light-on-light.png'), user_stripe_connect_omniauth_authorize_path() %>
           </div>
         </div>
     </div>
