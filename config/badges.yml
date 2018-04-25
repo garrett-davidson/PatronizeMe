@@ -1,0 +1,60 @@
+HighRoller:
+  id: 1
+  name: High Roller
+  description: I have spent a lot of money on this site.
+  levels:
+    - 1000
+    - 10000
+    - 50000
+
+Busy:
+  id: 2
+  name: Busy
+  description: I have put a lot of projects on here.
+  levels:
+    - 5
+    - 10
+    - 20
+
+Acceptable:
+  id: 3
+  name: Acceptable
+  description: People generally like my work.
+  levels:
+    - 0.9
+
+Completionist:
+  id: 4
+  name: Completionist
+  description: I get stuff done.
+  levels:
+    - 5
+    - 50
+    - 200
+
+Helpful:
+  id: 5
+  name: Helpful
+  description: I have supported a lot of issues.
+  levels:
+    - 5
+    - 50
+    - 500
+
+Likable:
+  id: 6
+  name: Likable
+  description: A lot of people support my work.
+  levels:
+    - 20
+    - 200
+    - 1000
+
+OldTimer:
+  id: 7
+  name: Old Timer
+  description: I have been here a while.
+  levels:
+    - 1
+    - 5
+    - 10
