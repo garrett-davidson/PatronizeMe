@@ -155,7 +155,11 @@
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <%= link_to image_tag('/images/light-on-light.png'), user_stripe_connect_omniauth_authorize_path() %>
+            <% if current_user.access_code == nil %>
+                <%= link_to image_tag('/images/light-on-light.png'), user_stripe_connect_omniauth_authorize_path() %>
+            <%else%>
+                <%= button_to "Withdraw", charges_withdraw_path, :style => "width:200px; display: block; margin: 0 auto;",  :class => "btn btn-danger salmon-color " , method: :get%>
+            <%end%>
           </div>
         </div>
     </div>
