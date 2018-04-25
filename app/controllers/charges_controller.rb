@@ -6,9 +6,18 @@ class ChargesController < ApplicationController
 
   def withdraw
       funds = current_user.balance
-      logger.debug funds
+
+      transfer = Stripe::Transfer.create({
+        :amount => funds.to_i,
+        :currency => "usd",
+        :destination => current_user.payment_uid,
+      })
+
+
       current_user.balance = 0
       current_user.save
+
+
   end
 
 
