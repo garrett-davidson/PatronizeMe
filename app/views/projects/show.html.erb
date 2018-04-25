@@ -58,7 +58,7 @@
       <%else%>
       <div class="row align-items-center">
         <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
-        <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
+        <h6 class="card-text font-weight-normal col-2">Pleges: <%=issue.issue_transactions.count%></h6>
         <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding.to_s%></h6>
         <%if issue.status == 1%>
         <button type="button" class="btn btn-success offset-2 col-1" data-toggle="modal" data-issueid=<%= issue.id %> data-projectid=<%= @project.id %> data-url=<%= request.original_url %> data-target="#ModalCenter">
