@@ -125,8 +125,8 @@ class ProjectsController < ApplicationController
 
     if status.to_i == 3
       for transaction in @issue.issue_transactions 
-          logger.debug transaction.user.email
-           FeedbackMailer.request_feedback(transaction.user, @project, @issue, @project.owner).deliver_now
+          GuestsCleanupJob.perform_later 'this is the test'
+          FeedbackMailer.request_feedback(transaction.user, @project, @issue, @project.owner).deliver_now
       end
 
     end
