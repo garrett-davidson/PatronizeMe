@@ -36,6 +36,9 @@
         <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
         <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
         <h6 class="card-text font-weight-normal col-5">Pledged: $<%=issue.total_funding.to_s%></h6>
+        <%if issue.status == 5%>
+            <h6 class="card-text font-weight-normal col-5">This issue has been successfully completed!</h6>
+         <%end%>   
         <%current_user.issue_transactions.each do |issue_transactions|%>
           <%if issue_transactions.issue == issue%> 
             <h6 class="card-text font-weight-normal col-2">My pledge: $<%=issue_transactions.amount.to_i/100%></h6>
@@ -55,11 +58,17 @@
         <%end%>        
         <p class="text-muted col-2"><%=issue.created_at%></p>
       </div>
+
       <%else%>
+
       <div class="row align-items-center">
         <h6 class="card-text font-weight-normal col-12"><%=issue.description%></h6>
         <h6 class="card-text font-weight-normal col-2">Pleges: <%=issue.issue_transactions.count%></h6>
         <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding.to_s%></h6>
+        <%if issue.status == 5%>
+            <h6 class="card-text font-weight-normal col-5">This issue has been successfully completed!</h6>
+         <%end%> 
+         
         <%if issue.status == 1%>
         <button type="button" class="btn btn-success offset-2 col-1" data-toggle="modal" data-issueid=<%= issue.id %> data-projectid=<%= @project.id %> data-url=<%= request.original_url %> data-target="#ModalCenter">
           Support
