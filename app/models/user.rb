@@ -26,4 +26,10 @@ class User < ApplicationRecord
 
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100#' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :avatar, content_type: %r{/\Aimage\/.*\Z}
+
+  def set_badge_level(badge_name, level)
+    badge = Badge.where(user_id: self.id, badge_id: $badges[badge_name]['id']).first_or_create
+    badge.level = level
+    badge.save!
+  end
 end
