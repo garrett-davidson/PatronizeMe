@@ -26,6 +26,6 @@ module PatronizeMe
       enable_starttls_auto: true
     }
 
-#    ActionMailer::Base.default_content_type = 'text/html'
+    $badges = YAML.load_file('config/badges.yml')
   end
 end

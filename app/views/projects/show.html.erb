@@ -68,7 +68,7 @@
         <%if issue.status == 5%>
             <h6 class="card-text font-weight-normal col-5">This issue has been successfully completed!</h6>
          <%end%> 
-         
+
         <%if issue.status == 1%>
         <button type="button" class="btn btn-success offset-2 col-1" data-toggle="modal" data-issueid=<%= issue.id %> data-projectid=<%= @project.id %> data-url=<%= request.original_url %> data-target="#ModalCenter">
           Support
@@ -178,8 +178,8 @@
 
   }
   function toInteger(number){ 
-    return Math.round(  // round to nearest integer
-      Number(number)    // type cast your input
+    return Math.round(  
+      Number(number)   
     ); 
   };
 
@@ -191,9 +191,6 @@
       url = button.data('url')
       form.setAttribute('method', 'post');
 
-      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-   
     })
 
   $('#ModalCenterCancel').on('show.bs.modal', function (event) {
@@ -204,9 +201,6 @@
       url = button.data('url')
       form.setAttribute('method', 'post');
 
-      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-   
     })
 
   </script>

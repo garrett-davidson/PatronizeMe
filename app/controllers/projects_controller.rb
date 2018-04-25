@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   ORDER_BY_SUPPORT = '(SELECT SUM("issue_transactions"."amount") FROM "issue_transactions" INNER JOIN "issues" ON "issue_transactions"."issue_id"= "issues"."id" WHERE "issues"."project_id" = projects.id) DESC'
   PROJECTS_PER_PAGE = 20
 
-   skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   # GET /projects
   # GET /projects.json
@@ -36,6 +36,9 @@ class ProjectsController < ApplicationController
       @project.status = 1
       @project.save!
 
+      project_count = current_user.projects.count
+
+      current_user.update_badge_progress('Busy', project_count)
 
       redirect_to profile_path
 
@@ -80,7 +83,7 @@ class ProjectsController < ApplicationController
       issue_id = params[:issue_id]
       if newamt > 0
         if newamt> current_user.balance
-            redirect_to new_charge_path
+          redirect_to new_charge_path
         else
           current_user.balance = current_user.balance - newamt
           redirect_back(fallback_location: root_path)
@@ -125,8 +128,8 @@ class ProjectsController < ApplicationController
 
     if status.to_i == 3
       GuestsCleanupJob.set(wait: 1.minutes).perform_later(@project, @issue)
-      for transaction in @issue.issue_transactions 
-          
+      for transaction in @issue.issue_transactions
+
           FeedbackMailer.request_feedback(transaction.user, @project, @issue, @project.owner).deliver_now
       end
 
@@ -240,16 +243,16 @@ class ProjectsController < ApplicationController
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
-    def set_issue
-      @issue = Issue.find(params[:issue_id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
+  def set_issue
+    @issue = Issue.find(params[:issue_id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def project_params
-      params.fetch(:project, {}).permit(:name, :link, :description, :status)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def project_params
+    params.fetch(:project, {}).permit(:name, :link, :description, :status)
+  end
 end
