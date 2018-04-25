@@ -23,7 +23,9 @@ if [[ $(hostname) == 'eridu' ]]; then
         kill -KILL $(ps -aux | grep puma | awk  '{print $2}' | sed -sn 2p)
         pwd
         bundle install
+        echo "" > log/development.log
         bin/rails server
+        bin/rails restart
 
         # Done
         echo 'Finished'
