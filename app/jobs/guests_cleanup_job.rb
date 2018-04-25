@@ -18,6 +18,10 @@ class GuestsCleanupJob < ApplicationJob
         issue.save
         owner = User.find(project.owner_id)
         owner.balance += (issue.total_funding * 100)
+        for ts in issue.issue_transactions
+            ts.completed = true
+            ts.save
+        end
         owner.save
         
         logger.debug 'issue has been completed'
