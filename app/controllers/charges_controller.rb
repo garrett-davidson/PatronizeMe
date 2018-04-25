@@ -5,7 +5,10 @@ class ChargesController < ApplicationController
   end
 
   def withdraw
-
+      funds = current_user.balance
+      logger.debug funds
+      current_user.balance = 0
+      current_user.save
   end
 
 
