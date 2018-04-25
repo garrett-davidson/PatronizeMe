@@ -124,8 +124,9 @@ class ProjectsController < ApplicationController
     @issue.save!
 
     if status.to_i == 3
+      GuestsCleanupJob.set(wait: 1.minutes).perform_later(@project, @issue)
       for transaction in @issue.issue_transactions 
-          GuestsCleanupJob.set(wait: 1.minutes).perform_later(@project, @issue)
+          
           FeedbackMailer.request_feedback(transaction.user, @project, @issue, @project.owner).deliver_now
       end
 
