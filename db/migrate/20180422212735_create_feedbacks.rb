@@ -6,6 +6,7 @@ class CreateFeedbacks < ActiveRecord::Migration[5.1]
       t.text :comment
       t.float :weight
       t.belongs_to :user
+      t.belongs_to :project
 
       t.timestamps
     end
