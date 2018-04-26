@@ -30,7 +30,7 @@ class User < ApplicationRecord
   def update_badge_progress(badge_name, progress)
     user_level = 0
     $badges[badge_name]['levels'].each do |level|
-      if progress > level.to_i
+      if progress >= level.to_i
         user_level += 1
       else
         break
