@@ -9,6 +9,20 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><%=current_user.email%></li>
+          <%if current_user.badges.any?%>
+            <li class="list-group-item">
+            <% current_user.badges.each do |badge| %>
+              <%badgeName = badge.find(badge.badge_id)%>
+              <%if badge.level == 1%>
+                <span class="badge badge-1" data-toggle="tooltip" data-placement="top" title="<%=badge.description(badgeName)%>  Tier:<%=badge.level%>"><%=badgeName%></span>
+              <%elsif badge.level == 2%>
+                <span class="badge badge-2" data-toggle="tooltip" data-placement="top" title="<%=badge.description(badgeName)%>  Tier:<%=badge.level%>"><%=badgeName%></span>
+              <%elsif badge.level == 3%>
+                <span class="badge badge-3" data-toggle="tooltip" data-placement="top" title="<%=badge.description(badgeName)%>  Tier:<%=badge.level%>"><%=badgeName%></span>
+              <%end%>
+            <% end %>
+            </li>
+          <%end%>
         </ul>
         <div class="card-body">
           <div class="github-card" data-github="<%=current_user.username%>" data-width="275" data-height="100" data-theme="default"></div>
@@ -50,3 +64,4 @@
 <script>
   githubcard(document)
 </script>
+<script > $('[data-toggle="tooltip"]').tooltip() </script>
