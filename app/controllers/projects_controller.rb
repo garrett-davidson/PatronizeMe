@@ -96,6 +96,9 @@ class ProjectsController < ApplicationController
           newTransaction.cancelled = false
           newTransaction.save!
           current_user.save!
+
+          totalCompletedTransactions = IssueTransaction.where(user: current_user, completed: true).sum('amount')
+          current_user.update_badge_progress('Helpful', totalCompletedTransactions)
         end
       end
     rescue
