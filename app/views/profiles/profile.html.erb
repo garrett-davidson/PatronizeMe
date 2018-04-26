@@ -12,6 +12,7 @@
           <%if current_user.badges.any?%>
             <li class="list-group-item">
             <% current_user.badges.each do |badge| %>
+              <%badgeName = badge.find(badge.badge_id)%>
               <%if badge.level == 1%>
                 <span class="badge badge-1" data-toggle="tooltip" data-placement="top" title="<%=badge.description(badgeName)%>  Tier:<%=badge.level%>"><%=badgeName%></span>
               <%elsif badge.level == 2%>
@@ -63,3 +64,4 @@
 <script>
   githubcard(document)
 </script>
+<script > $('[data-toggle="tooltip"]').tooltip() </script>
