@@ -80,7 +80,7 @@
                 <h6 class="card-text font-weight-normal col-2">Supporters: <%=issue.issue_transactions.count%></h6>
                 <h6 class="card-text font-weight-normal col-7">Pledged: $<%=issue.total_funding%></h6>
                   <%if issue.status == 1 %>
-                    <button type="button" class="btn btn-primary offset-1 col-1" id="<%=issue.id%>" onclick="ChangeStatus(2, <%=issue.id%>)">Active</button>
+                    <button type="button" class="btn btn-primary col-2" id="<%=issue.id%>" onclick="ChangeStatus(2, <%=issue.id%>)">Mark Active</button>
                   <% end %>
                   <%if issue.status == 2 %>
                     <button type="button" class="btn btn-primary col-1" id="<%=issue.id%>" onclick="ChangeStatus(1, <%=issue.id%>)">Open</button>
@@ -136,13 +136,13 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Conformation</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Once you have marked an issue as completed all supporters will be informed and get to review the changes. A approval rating of 50% will be needed to receive the funds.
+        Once you have marked an issue as completed all supporters will be informed and get to review the changes. An approval rating of 50% will be needed to receive the funds.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
