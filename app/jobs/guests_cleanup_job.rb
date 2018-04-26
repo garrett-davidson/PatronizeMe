@@ -23,8 +23,11 @@ class GuestsCleanupJob < ApplicationJob
             ts.save
         end
         owner.save
-        
+
         logger.debug 'issue has been completed'
+
+        completedCount = Issue.where(project: owner.projects, status: 5).count
+        owner.update_badge_progess('Completionist', completedCount)
     else
         issue.status = 1
         issue.save
